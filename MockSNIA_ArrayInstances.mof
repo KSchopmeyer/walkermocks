@@ -789,7 +789,7 @@
          InstanceID = "CIMXMLCapabilities Instance";
          AuthenticationMechanismsSupported = {0};
          ElementName = "WBEM Server CIMXMLCapabilities";
-         GenericOperationCapabilities = "TBD";
+         GenericOperationCapabilities = "instance of CIM_GenericOperationCapabilitiesStructure {FQLSupported = false; CQLSupport = 0; Validated = false; };";
          MaxConnections = 1;
          MultipleOperationsSupported = false;
          RequestedStatesSupported = {2,3,11};
