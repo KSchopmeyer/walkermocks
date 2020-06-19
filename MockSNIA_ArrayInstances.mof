@@ -794,7 +794,7 @@
          MultipleOperationsSupported = false;
          RequestedStatesSupported = {2,3,11};
          Validated = false;
-         WBEMProtocolVersionsSupported = {2.0.0}; };
+         WBEMProtocolVersionsSupported = {"2.0.0"}; };
     // SHRUB: CIM_ElementCapabilities TO CIM_ProtocolService
     
     // CIM_ComputerSystem instances
