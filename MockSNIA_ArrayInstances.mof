@@ -702,6 +702,11 @@
       AdvertiseTypes = {3};
       AdvertiseTypeDescriptions = {"SLP"};
       ImplementedFeatures = {""}; }; 
+    instance of CIM_RegisteredProfile as $RPDMTFPRP {
+       InstanceID = "DMTF Profile Registration+1.0"; RegisteredOrganization = 2;
+       OtherRegisteredOrganization = null; 
+       RegisteredName = "DMTF Profile Registration"; RegisteredVersion = "1.0";
+       AdvertiseTypes = {2}; AdvertiseTypeDescriptions = {"Not Advertised"}; };
     instance of CIM_RegisteredProfile as $RPIPInterface {
       InstanceID = "IP Interface 1.1.1";
       RegisteredName = "IP Interface";
@@ -738,6 +743,9 @@
     instance of CIM_ElementConformsToProfile as $ECTPWBEMServerSMIS {
        ConformantStandard = $RPSMIS;
        ManagedElement = $RPWBEMServer; };
+    instance of CIM_ElementConformsToProfile as $ECTPDMTFPRPSMIS {
+       ConformantStandard = $RPSMIS;
+       ManagedElement = $RPDMTFPRP; };
     instance of CIM_ElementConformsToProfile as $ECTPIPInterfaceSMIS {
        ConformantStandard = $RPSMIS;
        ManagedElement = $RPIPInterface; };
@@ -751,6 +759,9 @@
        ConformantStandard = $RPSMIS;
        ManagedElement = $RPSimpleIdent; };
     // PRP SHRUBs: CIM_ReferencedProfile to related profiles
+    instance of CIM_ReferencedProfile as $RPWBEMServerDMTFPRP {
+       Antecedent = $RPWBEMServer;
+       Dependent = $RPDMTFPRP; };
     instance of CIM_ReferencedProfile as $RPWBEMServerIPInterface {
        Antecedent = $RPWBEMServer;
        Dependent = $RPIPInterface; };
@@ -767,6 +778,9 @@
        instance of CIM_ElementSoftwareIdentity as $ESIRPWBEMServ {
           Antecedent = $ServerSoftware;
           Dependent = $RPWBEMServer; };
+       instance of CIM_ElementSoftwareIdentity as $ESIRPDMTFPRP {
+          Antecedent = $ServerSoftware;
+          Dependent = $RPDMTFPRP; };
        instance of CIM_ElementSoftwareIdentity as $ESIRPIPInterface {
           Antecedent = $ServerSoftware;
           Dependent = $RPIPInterface; };
