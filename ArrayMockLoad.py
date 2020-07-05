@@ -69,6 +69,7 @@ if verbose is True:
     CONN.display_repository()
 
 fullname = 'SNIA_Array'
+# fullname = 'SNIA_NAS Head'
 
 # Open input file
 unique_class_list =[]
@@ -94,12 +95,28 @@ if concount == 0:
 # the classes in 'classes' and all dependent classes and keep the
 # schema in directory my_schema_dir. This installs the schema into the
 # default class which is root/cimv2.
+
 print('Loading classes into the Mock Repository')
 CONN.compile_dmtf_schema(schema_version,
                          TESTSUITE_SCHEMA_DIR,
                          unique_class_list,
                          use_experimental=True,
                          verbose=False)
+#if hasattr(CONN, 'compile_schema_classes'):
+#    schema = DMTFCIMSchema(schema_version, TESTSUITE_SCHEMA_DIR,
+#                           use_experimental=True,
+#                           verbose=False)
+#    CONN.compile_schema_classes(
+#        unique_class_list,
+#        schema.schema_pragma_file,
+#        namespace="root/cimv2",
+#        verbose=False)
+#else:
+#    CONN.compile_dmtf_schema(
+#        schema_version, TESTSUITE_SCHEMA_DIR,
+#        unique_class_list,
+#        use_experimental=True,
+#        verbose=False)
 """
 print('Finding CIM_Container class definition in the Repository:')
 try:
