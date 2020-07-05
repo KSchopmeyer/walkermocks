@@ -774,6 +774,9 @@
     instance of CIM_ReferencedProfile as $RPWBEMServerSimple {
        Antecedent = $RPWBEMServer;
        Dependent = $RPSimpleIdent; };
+    instance of CIM_ReferencedProfile as $RPWBEMServerIND {
+       Antecedent = $RPWBEMServer;
+       Dependent = $RPIND; };
     // PRP SHRUBs: CIM_RegisteredProfile to SoftwareIdentity
        instance of CIM_ElementSoftwareIdentity as $ESIRPWBEMServ {
           Antecedent = $ServerSoftware;
@@ -857,12 +860,14 @@
     // SystemCreationClassName,SystemName,CreationClassName,Name
     // ElementName,NameFormat,PortNumber,ProtocolIFType
     instance of CIM_TCPProtocolEndpoint as $TCPPE11 {
+       InstanceID = "TCPPE11";
        SystemCreationClassName = "CIM_System";
        CreationClassName = "CIM_TCPProtocolEndpoint";
        SystemName = "10.336.643.144";
        Name = "10.336.643.144+TCP11";
        ElementName = "WBEM Server TCP Protocol Endpoint";
        NameFormat = "<PortAddress>+<Protocol><Number>";
+       OperationalStatus = {2};
        PortNumber = 11;
        ProtocolIFType = 4111; };
     // SHRUB: CIM_ServiceAccessBySAP TO CIM_ProtocolService
