@@ -933,6 +933,7 @@
          InstanceID = "CIMXMLCapabilities Instance";
          AuthenticationMechanismsSupported = {0};
          ElementName = "WBEM Server CIMXMLCapabilities";
+         ListeningPortManagementSupported = true;
          GenericOperationCapabilities = "instance of CIM_GenericOperationCapabilitiesStructure {FQLSupported = false; CQLSupport = {0}; Validated = false; };";
          MaxConnections = 1;
          MultipleOperationsSupported = false;
@@ -1001,6 +1002,11 @@
        instance of CIM_ServiceAccessBySAP as $SABSPSTCPPE {
           Antecedent = $PROTOSERVICE;
           Dependent = $TCPPE11; };
+    // CIM_HostedAccessPoint TO CIM_ComputerSystem
+      instance of CIM_HostedAccessPoint as $HAPTCPPECS11 {
+        Antecedent = $ServerSystem;
+        Dependent = $TCPPE11; };
+
     // CIM_WBEMProtocolServiceCapabilities instance (See CIMXMLCapabilities)
     // InstanceID
     // AuthenticationMechanismsSupported,GenericOperationCapabilities
