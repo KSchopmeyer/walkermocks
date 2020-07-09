@@ -1936,4 +1936,126 @@
 //          System = $ServerSystem; };
 
 ////////////////////////////////////////// 
+// Filesystem Profile instances go here
+// CIM_LocalFileSystem instances
+     instance of CIM_LocalFileSystem as $LFS11 {
+       AvailableSpace = 18874368;
+       BlockSize = 1024;
+       CSCreationClassName = "CIM_ComputerSystem";
+       CSName = "ACME+CF2A5091300089";
+       CasePreserved = true;
+       CaseSensitive = true;
+       CreationClassName = "CIM_LocalFileSystem";
+       FileSystemSize = 19922944;
+       FileSystemType = "ACME_FS";
+       MaxFileNameLength = 255;
+       Name = "11";
+       NumberOfFiles = 0;
+       OperationalStatus = {2};
+       Caption = "FS:fs11";
+       ElementName = "fs11"; };
+     instance of CIM_LocalFileSystem as $LFS14 {
+       AvailableSpace = 16777216;
+       BlockSize = 1024;
+       CSCreationClassName = "CIM_ComputerSystem";
+       CSName = "ACME+CF2A5091300089";
+       CasePreserved = true;
+       CaseSensitive = true;
+       CreationClassName = "CIM_LocalFileSystem";
+       FileSystemSize = 19922944;
+       FileSystemType = "ACME_FS";
+       MaxFileNameLength = 255;
+       Name = "14";
+       NumberOfFiles = 0;
+       OperationalStatus = {2};
+       Caption = "FS:fs14";
+       ElementName = "fs14"; };
+  // SHRUB: CIM_HostedFileSystem to ComputerSystem
+     instance of CIM_HostedFileSystem as $HFSLFSCS11 {
+       GroupComponent = $CS0;
+       PartComponent = $LFS11; };
+     instance of CIM_HostedFileSystem as $HFSLFSCS14 {
+       GroupComponent = $CS0;
+       PartComponent = $LFS14; };
+//   CIM_ResidesOnExtent to LogicalDisk
+     instance of CIM_ResidesOnExtent as $ROELFSLD11 {
+       Antecedent = $SV5;
+       Dependent = $LFS11; };
+     instance of CIM_ResidesOnExtent as $ROELFSLD14 {
+       Antecedent = $SV7;
+       Dependent = $LFS14; };
+//   CIM_SharedElement to FileShare (see below)
+//   CIM_ElementSettingData to CIM_FileSystemSetting (see below)
+     
+
+// File Storage Instances go here (See above)
+
+// File Export Instances go here
+     instance of CIM_CIFSShare as $CIFS14 {
+       SharingDirectory = true;
+       InstanceID = "ACME+CF2A5091300089+SP_A+CIFS0:14";
+       Name = "CIFS 14";
+       OperationalStatus = {2};
+       Caption = "CIFSFS:14";
+       ElementName = "CIFS 14"; };
+     instance of CIM_NFSShare as $NFS11 {
+       SharingDirectory = true;
+       InstanceID = "ACME+CF2A5091300089+SP_A+NFS0:11";
+       Name = "NFS 11";
+       OperationalStatus = {2};
+       Caption = "NFS 11";
+       ElementName = "NFS 11"; };
+  // SHRUB: CIM_HostedShare to CIM_ComputerSystem
+     instance of CIM_HostedShare as $HShCS14 {
+       Antecedent = $CS_CIFS0;
+       Dependent = $CIFS14; };
+     instance of CIM_HostedShare as $HShCS11 {
+       Antecedent = $CS_NFS0;
+       Dependent = $NFS11; };
+//   CIM_FileShareSettingData to CIM_ExportedFileShareSetting (see below)
+//   CIM_SAPAvailableForFileShare to CIM_ProtocolEndpoint
+     instance of CIM_SAPAvailableForFileShare as $SAFFSFShPE14 {
+       ManagedElement = $CIFS14;
+       AvailableSAP = $CIFSPE0; };
+     instance of CIM_SAPAvailableForFileShare as $SAFFSFShPE11 {
+       ManagedElement = $NFS11;
+       AvailableSAP = $NFSPE0; };
+//   CIM_SharedElement to CIM_LocalFileSystem
+     instance of CIM_SharedElement as $SEFShLFS14 {
+       SameElement = $CIFS14;
+       SystemElement = $LFS14; };
+     instance of CIM_SharedElement as $SEFShLFS11 {
+       SameElement = $NFS11;
+       SystemElement = $LFS11; };
+     
+     instance of CIM_ExportedFileShareSetting as $EFShS14 {
+       AccessPoints = 5;
+       DefaultReadWrite = 3;
+       DefaultUserIdSupported = 2;
+       FileSharingProtocol = 3;
+       InitialEnabledState = 2;
+       ProtocolVersions = {"SMB3.0"};
+       RootAccess = 3;
+       ElementName = "CIFS 14 Setting";
+       InstanceID = "ACME+CF2A5091300089+SP_A+CIFS0:14";
+       Caption = "CIFS 14 Setting"; };
+     instance of CIM_ExportedFileShareSetting as $EFShS11 {
+       AccessPoints = 4;
+       DefaultReadWrite = 3;
+       DefaultUserIdSupported = 2;
+       FileSharingProtocol = 2;
+       InitialEnabledState = 2;
+       ProtocolVersions = {"v2", "v3", "v4"};
+       RootAccess = 3;
+       ElementName = "NFS 11 Setting";
+       InstanceID = "ACME+CF2A5091300089+SP_A+NFS0:11";
+       Caption = "NFS 11 Setting"; };
+  // SHRUB: CIM_FileShareSettingData to CIM_FileShare
+     instance of CIM_FileShareSettingData as $FSSDEFSSFSh11 {
+       ManagedElement = $NFS11;
+       SettingData = $EFShS11; };
+     instance of CIM_FileShareSettingData as $FSSDEFSSFSh14 {
+       ManagedElement = $CIFS14;
+       SettingData = $EFShS14; };
+
 // FSPerf instances go here
