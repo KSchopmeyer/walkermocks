@@ -807,7 +807,9 @@
          AuthenticationMechanismsSupported = {0};
          ElementName = "WBEM Server CIMXMLCapabilities";
          ListeningPortManagementSupported = true;
-         GenericOperationCapabilities = "instance of CIM_GenericOperationCapabilitiesStructure {FQLSupported = false; CQLSupport = {0}; Validated = false; };";
+         GenericOperationCapabilities = "instance of CIM_GenericOperationCapabilitiesStructure {FQLSupported = false; "
+         "CQLSupport = {0}; OperationsSupported = {2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,"
+         "26,27,28,29,30,31,32,33,34,35,36,37,38,39,40}; };";
          MaxConnections = 1;
          MultipleOperationsSupported = false;
          RequestedStatesSupported = {2,3,11};
@@ -933,9 +935,9 @@
         InstanceID = "WBEM Server Namespace 00";
         Name = "cimv2";
         ElementName = "cimv2";
-        SchemaInformation = "instance of CIM_SchemaInformationStructure { "
-        "Name = \"CIM\"; Version = \"2.51.0\"; OwningOrganization = \"DMTF\"; "
-        "Status = 3};"; };
+        SchemaInformation = "instance of CIM_SchemaInformationStructure { Name = \"CIM\"; Version = \"2.51.0\";"
+        " OwningOrganization = \"DMTF\"; Status = 3; };"; 
+         };
     // SHRUB: CIM_HostedDependency TO CIM_WBEMServer
       instance of CIM_HostedDependency as $HDWSWSName00 {
         Antecedent = $WBEMServer;
