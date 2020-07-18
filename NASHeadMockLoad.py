@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  ArrayMockLoad.py
+#  NASHeadMockLoad.py
 #
-#  Copyright 2019 FarmerMike <FarmerMike252@Yahoo.com>
+#  Copyright 2020 FarmerMike <FarmerMike252@Yahoo.com>
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -97,26 +97,26 @@ if concount == 0:
 # default class which is root/cimv2.
 
 print('Loading classes into the Mock Repository')
-CONN.compile_dmtf_schema(schema_version,
-                         TESTSUITE_SCHEMA_DIR,
-                         unique_class_list,
-                         use_experimental=True,
-                         verbose=False)
-#if hasattr(CONN, 'compile_schema_classes'):
-#    schema = DMTFCIMSchema(schema_version, TESTSUITE_SCHEMA_DIR,
-#                           use_experimental=True,
-#                           verbose=False)
-#    CONN.compile_schema_classes(
-#        unique_class_list,
-#        schema.schema_pragma_file,
-#        namespace="root/cimv2",
-#        verbose=False)
-#else:
-#    CONN.compile_dmtf_schema(
-#        schema_version, TESTSUITE_SCHEMA_DIR,
-#        unique_class_list,
-#        use_experimental=True,
-#        verbose=False)
+# CONN.compile_dmtf_schema(schema_version,
+#                         TESTSUITE_SCHEMA_DIR,
+#                         unique_class_list,
+#                         use_experimental=True,
+#                         verbose=False)
+if hasattr(CONN, 'compile_schema_classes'):
+    schema = pywbem_mock.DMTFCIMSchema(schema_version, TESTSUITE_SCHEMA_DIR,
+                           use_experimental=True,
+                           verbose=False)
+    CONN.compile_schema_classes(
+        unique_class_list,
+        schema.schema_pragma_file,
+        namespace='root/cimv2',
+        verbose=False)
+else:
+    CONN.compile_dmtf_schema(schema_version,
+        TESTSUITE_SCHEMA_DIR,
+        unique_class_list,
+        namespace='root/cimv2',
+        verbose=False)
 """
 print('Finding CIM_Container class definition in the Repository:')
 try:
