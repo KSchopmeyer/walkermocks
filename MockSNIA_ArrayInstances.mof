@@ -2398,10 +2398,10 @@
        Instance of CIM_BlockStatisticsCapabilities as $BSCap {
          ElementTypesSupported = {2, 6, 8, 10};
          RateElementTypesSupported = {};
-         SynchronousMethodsSupported = {4, 5, 6, 7, 8};
+         SynchronousMethodsSupported = {4, 5, 6, 7};
          AsynchronousMethodsSupported = {};
         ClockTickInterval = 100000;
-        SupportedFeatures = {3};
+        SupportedFeatures = {3,6};
         InstanceID = "ACME+CF2A5091300089";
          ElementName = "Capabilities for block statistics service"; };
          
@@ -2414,7 +2414,7 @@
          IncludeStatisticTime = true;
          IncludeTotalIOs = true;
          IncludeKBytesTransferred = true;
-         IncludeIOTimeCounter = false;
+         IncludeIOTimeCounter = true;
          IncludeReadIOs = true;
          IncludeReadHitIOs = true;
          IncludeReadIOTimeCounter = false;
@@ -2429,7 +2429,7 @@
          IncludeMaintOp = false;
          IncludeMaintTimeCounter = false;
         CSVSequence = {"InstanceID", "ElementType", "StatisticTime", "TotalIOs",
-         "KBytesTransferred", "ReadIOs", "ReadHitIOs", "KBytesRead", "WriteIOs", "WriteHitIOs", "KBytesWritten"};
+         "KBytesTransferred", "IOTimeCounter", "ReadIOs", "ReadHitIOs", "KBytesRead", "WriteIOs", "WriteHitIOs", "KBytesWritten"};
          CSVRateSequence = {};
          IncludeRateIntervalStartTime = false;
          IncludeRateIntervalEndTime = false;
@@ -2490,7 +2490,7 @@
          IncludeStatisticTime = true;
          IncludeTotalIOs = true;
          IncludeKBytesTransferred = true;
-         IncludeIOTimeCounter = false;
+         IncludeIOTimeCounter = true;
          IncludeReadIOs = false;
          IncludeReadHitIOs = false;
          IncludeReadIOTimeCounter = false;
@@ -2504,7 +2504,7 @@
          IncludeIdleTimeCounter = false;
          IncludeMaintOp = false;
          IncludeMaintTimeCounter = false;
-         CSVSequence = {"InstanceID", "ElementType", "StatisticTime", "TotalIOs", "KBytesTransferred"};
+         CSVSequence = {"InstanceID", "ElementType", "StatisticTime", "TotalIOs", "KBytesTransferred", "IOTimeCounter"};
          CSVRateSequence = {};
          IncludeRateIntervalStartTime = false;
          IncludeRateIntervalEndTime = false;
@@ -2578,19 +2578,21 @@
          ElementType = 2;
          TotalIOs = 132;
          KBytesTransferred = 66;
-         KBytesWritten = 0;
+         IOTimeCounter = 264;
          ReadIOs = 132;
          ReadHitIOs = 1844272;
          KBytesRead = 66;
-        WriteIOs = 0;
-        WriteHitIOs = 1845899;
-        InstanceID = "ACME+CF2A5091300089+Array";
-        ElementName = "Array";
+         WriteIOs = 0;
+         WriteHitIOs = 1845899;
+         KBytesWritten = 0;
+         InstanceID = "ACME+CF2A5091300089+Array";
+         ElementName = "Array";
          StatisticTime = "20131029094506.283000-240"; };
          
        Instance of CIM_BlockStorageStatisticalData as $BSSDFEP0 {
          ElementType = 6;
          TotalIOs = 67; KBytesTransferred = 33;
+         IOTimeCounter = 132;
          InstanceID = "ACME+CF2A5091300089+FEPort+SP_A:0";
          ElementName = "SP_A:0";
          StatisticTime = "20131029094523.599000-240";};
@@ -2599,6 +2601,7 @@
          ElementType = 6;
          TotalIOs = 0;
          KBytesTransferred = 0;
+         IOTimeCounter = 132;
          InstanceID = "ACME+CF2A5091300089+FEPort+SP_A:1";
          ElementName = "SP_A:1";
          StatisticTime = "20131029094523.599000-240";};
@@ -2609,7 +2612,7 @@
          KBytesTransferred = 0; KBytesWritten = 0;
          IOTimeCounter = 438;
          ReadIOs = 0; ReadHitIOs = 0; KBytesRead = 0;
-         WriteIOs = 0; WriteHitIOs = 0;
+         WriteIOs = 0; WriteHitIOs = 0; 
          IdleTimeCounter = 462867449;
          InstanceID = "ACME+CF2A5091300089+Volume+00005";
          ElementName = "00005";
