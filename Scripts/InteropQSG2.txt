@@ -1,0 +1,135 @@
+===================================================
+STARTER GUIDE FOR WBEM SERVER (What is the Interop Namespace)
+// In this guide we will be exploring the interop namespace and explaining why it is important to any CIM implementation.
+// The interop namespace contains common elements for any CIM Server. It contains profile definitions, accounts 
+// for who can access the server, the Roles they play and Indications supported by the server.
+// So let's begin.
+// In this script we will be working with beta3 of pywbem 1.0.0 and version 0.7 of pywbemtools (pywbemcli).
+C:>workon beta3
+// We will be working with a mock server that supports an SMI-S 1.8.0 Array. We will point out items that were introduced after 1.6.1.
+C:>pywbemcli -o table --name ArrayMock
+// The first thing we will look at are instances of CIM_RegisteredProfile. Each instance defines standard behavior 
+// supported by the CIM Server.
+instance enumerate CIM_RegisteredProfile --pl RegisteredOrganization,RegisteredName,RegisteredVersion,AdvertiseTypes
+// We see there are a lot of profiles. Some are autonomous profiles, some are component profiles (that support the
+// autonomous profiles and one represents SMI-S itself. The 14th profile in this list is the RegisteredProfile for
+// SMI-S. In this mock, all the profiles support SMI-S 1.8.0. 
+// From SMI-S 1.8.0, we know that the autonomous profiles in this list are Array, Server and WBEM Server. Technically, the
+// DMTF Profile Registration profile is also an autonomous profile. But in SMI-S, this profile is treated as a
+// component profile.
+// Of these profiles, the WBEM Server profile and three of its component profiles (IP Interface, Role Based Authorization and
+// Simple Identity Management) were introduced after 1.6.1.
+// Just to verify that all the profiles support SMI-S 1.8.0 we will run the following query:
+instance shrub CIM_RegisteredProfile.? --ac CIM_ElementConformsToProfile
+0
+// We see that all the instances conform to SMI-S 1.8.0.
+// SMI-S uses something called the "Scoping Methodology". That means the autonomous profiles must have a CIM_ElementConformsToProfile
+// to their central instance. That is a CIM class instance that is central to the implementation of the autonomous profile.
+// So, let's look at the central instances of our autonomous profiles.
+instance shrub CIM_RegisteredProfile.? --ac CIM_ElementConformsToProfile 
+1
+// For the Server profile, the central instance is an instance of CIM_ObjectManager.
+instance shrub CIM_RegisteredProfile.? --ac CIM_ElementConformsToProfile
+4
+// For the Array profile, the central instance is an instance of CIM_ComputerSystem. It is sometimes referred to as the top
+// level system of the Array.
+instance shrub CIM_RegisteredProfile.? --ac CIM_ElementConformsToProfile
+12
+// For the WBEM Server profile, the central instance is an instance of CIM_System. But it is a different instance
+// than the Array computer system.
+// And we see that both the DMTF WBEM Server and the SNIA Server have been implemented. The means the Interop requirements for both servers
+// should be present. The DMTF WBEM Server is new in SMI-S 1.8.0. The SNIA Server was the profile for the Interop Namespace for
+// the first six releases of SMI-S.
+// Let's start by inspecting what the DMTF WBEM Server standard calls for:
+instance shrub CIM_RegisteredProfile.? --ac CIM_ReferencedProfile 
+12
+// We see that the DMTF WBEM Server profile has six component profiles (the DMTF Profile Registration, IP Interface, Job Control, 
+// Role Based Authorization, Simple Identity Management and Indications profiles). So, let compare that to the SNIA Server profile 
+// component profiles.
+instance shrub CIM_RegisteredProfile.? --ac CIM_ReferencedProfile
+1
+// We see that the SNIA Server profile has two component profiles (the Indications and Profile Registration). Notice the SNIA
+// Server profile uses the SNIA Profile Registration, whereas the WBEM Server Profile uses the DMTF Profile Registration. The
+// SNIA Profile Registration augments the DMTF Profile Registration by adding the requirement for a CIM_ElementConformsToProfile
+// to the SMI-S RegisteredProfile and Software information about what software supports the interop namespace.
+// Since the mock server is claiming to support BOTH the DMTF WBEM Server AND the SNIA Server, the SNIA augmentation also 
+// applies to the WBEM Server.
+///////
+// Now let's see what the interop namespace has for Accounts
+instance enumerate CIM_Account --pl Name,Userid,UserPassword,OrganizationName,RequestedState,EnabledState
+// We have two accounts (Jane and John).
+// Let's see what the accounts are related to:
+instance shrub CIM_Account.?
+0
+// We see that the CIM_Account is defined on the WBEM Server system and has an assigned identity.
+// Let's look at the assigned identities.
+instance enumerate CIM_Identity
+// We see there are two identities, one for Jane (Jane Doe) and one for John (John Doe).
+// Let's see what the identities are related to.
+instance shrub CIM_Identity.?
+0
+// In addition to being the assigned identity for a CIM_Account, we see that it has a dependency to a CIM_Role and is 
+// managed by an account management service.
+//////
+// Now let's see what the interop namespace has for Roles
+instance enumerate CIM_Role
+// We see there is a role of "Admin" and a role of "User"
+// Let's see what the roles are related to.
+-o mof instance shrub CIM_Role.?
+// We see that a CIM_ConcreteDependency relates a CIM_Role to CIM_Identity instances that play that role. We also see that the
+// CIM_Role is owned by the server system (via CIM_OwnedElement). And there the role applies to two systems (the Server
+// system and the top level system of the array). And we see that the CIM_Role instance is managed by an instance of
+// CIM_RoleBasedAuthorizationService.
+//////
+// Next both the DMTF WBEM Server profile and the SNIA Server profile support the DMTF Indications profile. An indication
+// is an unsolicited message that is sent FROM the CIM Server to anyone that might be listening for the indication. It is
+// the CIM equivalent of an SNMP alert. The messages supported by a CIM Server are defined by instances of CIM_IndicationFilter.
+// Indication filters can be static (pre-defined by the CIM Server) or dynamic (created by a user of the CIM Server). In either
+// case, we can see by enumerating instances of CIM_IndicationFilter. So, let's do that.
+instance enumerate CIM_IndicationFilter --pl SystemName,Name,SourceNamespaces,IndividualSubscriptionSupported
+// We see that there are 19 indications defined for this CIM Server. That is there are 19 different events that this CIM Server
+// may send to clients that are listening for the indications. In this list a number of them are new since 1.6.1. They include the
+// "Change in Pool TotalManagedSpace", "Pool capacity condition has been cleared" and "Storage Volume returned to normal service".
+// Next let's look at what elements are related to these indication filters:
+instance shrub CIM_IndicationFilter.?
+12
+// We see that indication filters are related to two other elements: A FilterCollection and an IndicationService. 
+// Let's first look at the service.
+instance enumerate CIM_IndicationService --pl Name,FilterCreationEnabled,DeliveryRetryAttempts,DeliveryRetryInterval,SubscriptionRemovalAction,SubscriptionRemovalTimeInterval
+// We see that filter creation is enabled and there will be three attempts to deliver an indication and 30 seconds between the 
+// attempts. We also see that the subscription removal action is 4 (Ignore) and the time interval before removal is 0 seconds.
+// Now let's look at the Filter Collections:
+instance enumerate CIM_FilterCollection
+// Each of the Indication Filters can be related to a FilterCollection for profiles that support indications, or they may be
+// related to a GlobalFilterCollection. If the filter is related to a specific profile, then it is generated for that specific
+// profile elements. If it is in the Global Filter Collection, it can be generated from multiple profiles.
+// These filter collections are actually associated to the RegisteredProfiles.
+instance shrub CIM_FilterCollection.? --ac CIM_ConcreteDependency
+1
+// You can look at the indications supported by specific profiles by inspecting the member of collection association from the filter
+// collection.
+instance shrub CIM_FilterCollection.? --ac CIM_MemberOfCollection
+3
+// Finally we have the IP Interface profile as a component of the DMTF WBEM Server profile. This profile is required if 
+// WBEM Protocol Management is supported. This can be determined by looking for an instance of CIM_WBEMProtocolServiceCapabilities
+// with a value of true for the ListeningPortManagementSupported.
+instance enumerate CIM_WBEMProtocolServiceCapabilities --pl InstanceID,ListeningPortManagementSupported
+// And we see that a CIM_WBEMProtocolServiceCapabilities exists and it has ListeningPortManagementSupported = true.
+// So, let's see what else we have in the capabilities (we will do this in two requests for readability):
+instance enumerate CIM_WBEMProtocolServiceCapabilities --pl InstanceID,AuthenticationMechanismsSupported,MaxConnections,RequestedStatesSupported
+instance enumerate CIM_WBEMProtocolServiceCapabilities --pl InstanceID,WBEMProtocolVersionsSupported,GenericOperationCapabilities
+// We see the AuthenticationMechanismsSupported is unknown, MaxConnections are 1 and the RequestedStatesSupported are Enabled, Disabled and Reset.
+// And we see the ProtocolVersionsSupported is 2.0.0, which means any version 2 release. And we see FQL and CQL are not supported and
+// a whole bunch of generic operations are supported.
+// Next we will look at the protocol service 
+instance enumerate CIM_ProtocolService --pl Name,EnabledState,MaxConnections,RequestedState,OperationalStatus,HealthState
+// We see that it is a CIMXML protocol service (as opposed to WS Management) with a maximum of 1 connection. The EnabledState is
+// Not Applicable, the HealthState and OperationalStatus are OK and RequestedState is Not Applicable.
+// Next lets see what the protocol service manages.
+-o mof instance shrub CIM_ProtocolService.?
+// We see that the protocol service has a capabilities (CIM_CIMXMLCapabilities), which we have already looked at.
+// We also see from the CIM_ProtocolService shrub report that the CIM_ProtocolService is managing a CIM_TCPProtocolEndpoint instance.
+// So, let's look at that.
+instance enumerate CIM_TCPProtocolEndpoint --pl InstanceID,Name,NameFormat,OperationalStatus,ProtocolIFType,SystemName
+// This is the protocolendpoint for communicating to the CIM Server.
+===================================================

@@ -1,0 +1,503 @@
+Microsoft Windows [Version 10.0.18363.959]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\FarmerMike>workon beta3
+(beta3) c:\Users\FarmerMike\devenv>pywbemcli -o table --name ArrayMock
+Enter 'help' for help, <CTRL-D> or ':q' to exit pywbemcli or <CTRL-r> to search history,
+pywbemcli> instance enumerate CIM_RegisteredProfile --pl RegisteredOrganization,RegisteredName,RegisteredVersion,Advert
+iseTypes
+/Loading classes into the Mock Repository
+\Loading instances into the Mock Repository
+-DONE Loading instances into the Mock Repository
+Instances: CIM_RegisteredProfile
++--------------------+------------------------------+--------------------------+---------------------+
+| AdvertiseTypes     | RegisteredName               | RegisteredOrganization   | RegisteredVersion   |
+|--------------------+------------------------------+--------------------------+---------------------|
+| 3 (SLP)            | "Array"                      | 11 (SNIA)                | "1.8.0"             |
+| 2 (Not Advertised) | "Block Server Performance"   | 11 (SNIA)                | "1.8.0"             |
+| 2 (Not Advertised) | "Block Services"             | 11 (SNIA)                | "1.8.0"             |
+| 2 (Not Advertised) | "DMTF Profile Registration"  | 2 (DMTF)                 | "1.0"               |
+| 2 (Not Advertised) | "Disk Drive Lite"            | 11 (SNIA)                | "1.8.0"             |
+| 2 (Not Advertised) | "FC Target Ports"            | 11 (SNIA)                | "1.8.0"             |
+|                    | "IP Interface"               | 2 (DMTF)                 | "1.1.1"             |
+| 2 (Not Advertised) | "Indications"                | 2 (DMTF)                 | "1.2.2"             |
+|                    | "Job Control"                | 2 (DMTF)                 | "1.0.0"             |
+| 2 (Not Advertised) | "Multiple Computer System"   | 11 (SNIA)                | "1.2.0"             |
+| 2 (Not Advertised) | "Physical Package"           | 11 (SNIA)                | "1.8.0"             |
+| 2 (Not Advertised) | "Profile Registration"       | 11 (SNIA)                | "1.7.0"             |
+|                    | "Role Based Authorization"   | 2 (DMTF)                 | "1.0.0"             |
+| 2 (Not Advertised) | "SMI-S"                      | 11 (SNIA)                | "1.8.0"             |
+| 3 (SLP)            | "Server"                     | 11 (SNIA)                | "1.7.0"             |
+|                    | "Simple Identity Management" | 2 (DMTF)                 | "1.1.0"             |
+| 2 (Not Advertised) | "Software"                   | 11 (SNIA)                | "1.8.0"             |
+| 3 (SLP)            | "WBEM Server"                | 2 (DMTF)                 | "1.0.1i"            |
++--------------------+------------------------------+--------------------------+---------------------+
+pywbemcli> instance shrub CIM_RegisteredProfile.? --ac CIM_ElementConformsToProfile
+Pick Instance name to process
+0: root/cimv2:CIM_RegisteredProfile.InstanceID="SMI-S+1.8.0"
+1: root/cimv2:CIM_RegisteredProfile.InstanceID="Server+1.7.0"
+2: root/cimv2:CIM_RegisteredProfile.InstanceID="Profile Registration+1.7.0"
+3: root/cimv2:CIM_RegisteredProfile.InstanceID="Indications+1.2.2"
+4: root/cimv2:CIM_RegisteredProfile.InstanceID="Array+1.8.0"
+5: root/cimv2:CIM_RegisteredProfile.InstanceID="Physical Package+1.8.0"
+6: root/cimv2:CIM_RegisteredProfile.InstanceID="Block Services+1.8.0"
+7: root/cimv2:CIM_RegisteredProfile.InstanceID="FC Target Ports+1.8.0"
+8: root/cimv2:CIM_RegisteredProfile.InstanceID="Software+1.8.0"
+9: root/cimv2:CIM_RegisteredProfile.InstanceID="Disk Drive Lite+1.8.0"
+10: root/cimv2:CIM_RegisteredProfile.InstanceID="Block Server Performance+1.8.0"
+11: root/cimv2:CIM_RegisteredProfile.InstanceID="Multiple Computer System+1.2.0"
+12: root/cimv2:CIM_RegisteredProfile.InstanceID="WBEM Server 1.0.1i"
+13: root/cimv2:CIM_RegisteredProfile.InstanceID="DMTF Profile Registration+1.0"
+14: root/cimv2:CIM_RegisteredProfile.InstanceID="IP Interface 1.1.1"
+15: root/cimv2:CIM_RegisteredProfile.InstanceID="Job Control 1.0.0"
+16: root/cimv2:CIM_RegisteredProfile.InstanceID="Role Based Authorization 1.0.0"
+17: root/cimv2:CIM_RegisteredProfile.InstanceID="Simple Identity Management 1.1.0"
+Input integer between 0 and 17 or Ctrl-C to exit selection: 0
+Shrub of root/cimv2:CIM_RegisteredProfile.InstanceID="SMI-S+1.8.0": paths
++--------------------+------------------------------+----------------+-----------------------+---------------------------------------------------------------------+
+| Role               | AssocClass                   | ResultRole     | ResultClass           | Assoc Inst paths                                                    |
+|--------------------+------------------------------+----------------+-----------------------+---------------------------------------------------------------------|
+| ConformantStandard | CIM_ElementConformsToProfile | ManagedElement | CIM_RegisteredProfile | CIM_RegisteredProfile.InstanceID="Array+1.8.0"                      |
+|                    |                              |                |                       | CIM_RegisteredProfile.InstanceID="Block Server Performance+1.8.0"   |
+|                    |                              |                |                       | CIM_RegisteredProfile.InstanceID="Block Services+1.8.0"             |
+|                    |                              |                |                       | CIM_RegisteredProfile.InstanceID="DMTF Profile Registration+1.0"    |
+|                    |                              |                |                       | CIM_RegisteredProfile.InstanceID="Disk Drive Lite+1.8.0"            |
+|                    |                              |                |                       | CIM_RegisteredProfile.InstanceID="FC Target Ports+1.8.0"            |
+|                    |                              |                |                       | CIM_RegisteredProfile.InstanceID="IP Interface 1.1.1"               |
+|                    |                              |                |                       | CIM_RegisteredProfile.InstanceID="Indications+1.2.2"                |
+|                    |                              |                |                       | CIM_RegisteredProfile.InstanceID="Job Control 1.0.0"                |
+|                    |                              |                |                       | CIM_RegisteredProfile.InstanceID="Multiple Computer System+1.2.0"   |
+|                    |                              |                |                       | CIM_RegisteredProfile.InstanceID="Physical Package+1.8.0"           |
+|                    |                              |                |                       | CIM_RegisteredProfile.InstanceID="Profile Registration+1.7.0"       |
+|                    |                              |                |                       | CIM_RegisteredProfile.InstanceID="Role Based Authorization 1.0.0"   |
+|                    |                              |                |                       | CIM_RegisteredProfile.InstanceID="Server+1.7.0"                     |
+|                    |                              |                |                       | CIM_RegisteredProfile.InstanceID="Simple Identity Management 1.1.0" |
+|                    |                              |                |                       | CIM_RegisteredProfile.InstanceID="Software+1.8.0"                   |
+|                    |                              |                |                       | CIM_RegisteredProfile.InstanceID="WBEM Server 1.0.1i"               |
++--------------------+------------------------------+----------------+-----------------------+---------------------------------------------------------------------+
+pywbemcli> instance shrub CIM_RegisteredProfile.? --ac CIM_ElementConformsToProfile
+Pick Instance name to process
+0: root/cimv2:CIM_RegisteredProfile.InstanceID="SMI-S+1.8.0"
+1: root/cimv2:CIM_RegisteredProfile.InstanceID="Server+1.7.0"
+2: root/cimv2:CIM_RegisteredProfile.InstanceID="Profile Registration+1.7.0"
+3: root/cimv2:CIM_RegisteredProfile.InstanceID="Indications+1.2.2"
+4: root/cimv2:CIM_RegisteredProfile.InstanceID="Array+1.8.0"
+5: root/cimv2:CIM_RegisteredProfile.InstanceID="Physical Package+1.8.0"
+6: root/cimv2:CIM_RegisteredProfile.InstanceID="Block Services+1.8.0"
+7: root/cimv2:CIM_RegisteredProfile.InstanceID="FC Target Ports+1.8.0"
+8: root/cimv2:CIM_RegisteredProfile.InstanceID="Software+1.8.0"
+9: root/cimv2:CIM_RegisteredProfile.InstanceID="Disk Drive Lite+1.8.0"
+10: root/cimv2:CIM_RegisteredProfile.InstanceID="Block Server Performance+1.8.0"
+11: root/cimv2:CIM_RegisteredProfile.InstanceID="Multiple Computer System+1.2.0"
+12: root/cimv2:CIM_RegisteredProfile.InstanceID="WBEM Server 1.0.1i"
+13: root/cimv2:CIM_RegisteredProfile.InstanceID="DMTF Profile Registration+1.0"
+14: root/cimv2:CIM_RegisteredProfile.InstanceID="IP Interface 1.1.1"
+15: root/cimv2:CIM_RegisteredProfile.InstanceID="Job Control 1.0.0"
+16: root/cimv2:CIM_RegisteredProfile.InstanceID="Role Based Authorization 1.0.0"
+17: root/cimv2:CIM_RegisteredProfile.InstanceID="Simple Identity Management 1.1.0"
+Input integer between 0 and 17 or Ctrl-C to exit selection: 1
+Shrub of root/cimv2:CIM_RegisteredProfile.InstanceID="Server+1.7.0": paths
++--------------------+------------------------------+--------------------+-----------------------+------------------------------------------------+
+| Role               | AssocClass                   | ResultRole         | ResultClass           | Assoc Inst paths                               |
+|--------------------+------------------------------+--------------------+-----------------------+------------------------------------------------|
+| ConformantStandard | CIM_ElementConformsToProfile | ManagedElement     | CIM_ObjectManager     | /:CIM_ObjectManager.                           |
+|                    |                              |                    |                       | Name="ACME:10.336.643.144",                    |
+|                    |                              |                    |                       | SystemCreationClassName="CIM_System",          |
+|                    |                              |                    |                       | SystemName="10.336.643.144",                   |
+|                    |                              |                    |                       | CreationClassName="CIM_ObjectManager"          |
+| ManagedElement     | CIM_ElementConformsToProfile | ConformantStandard | CIM_RegisteredProfile | CIM_RegisteredProfile.InstanceID="SMI-S+1.8.0" |
++--------------------+------------------------------+--------------------+-----------------------+------------------------------------------------+
+pywbemcli> instance shrub CIM_RegisteredProfile.? --ac CIM_ElementConformsToProfile
+Pick Instance name to process
+0: root/cimv2:CIM_RegisteredProfile.InstanceID="SMI-S+1.8.0"
+1: root/cimv2:CIM_RegisteredProfile.InstanceID="Server+1.7.0"
+2: root/cimv2:CIM_RegisteredProfile.InstanceID="Profile Registration+1.7.0"
+3: root/cimv2:CIM_RegisteredProfile.InstanceID="Indications+1.2.2"
+4: root/cimv2:CIM_RegisteredProfile.InstanceID="Array+1.8.0"
+5: root/cimv2:CIM_RegisteredProfile.InstanceID="Physical Package+1.8.0"
+6: root/cimv2:CIM_RegisteredProfile.InstanceID="Block Services+1.8.0"
+7: root/cimv2:CIM_RegisteredProfile.InstanceID="FC Target Ports+1.8.0"
+8: root/cimv2:CIM_RegisteredProfile.InstanceID="Software+1.8.0"
+9: root/cimv2:CIM_RegisteredProfile.InstanceID="Disk Drive Lite+1.8.0"
+10: root/cimv2:CIM_RegisteredProfile.InstanceID="Block Server Performance+1.8.0"
+11: root/cimv2:CIM_RegisteredProfile.InstanceID="Multiple Computer System+1.2.0"
+12: root/cimv2:CIM_RegisteredProfile.InstanceID="WBEM Server 1.0.1i"
+13: root/cimv2:CIM_RegisteredProfile.InstanceID="DMTF Profile Registration+1.0"
+14: root/cimv2:CIM_RegisteredProfile.InstanceID="IP Interface 1.1.1"
+15: root/cimv2:CIM_RegisteredProfile.InstanceID="Job Control 1.0.0"
+16: root/cimv2:CIM_RegisteredProfile.InstanceID="Role Based Authorization 1.0.0"
+17: root/cimv2:CIM_RegisteredProfile.InstanceID="Simple Identity Management 1.1.0"
+Input integer between 0 and 17 or Ctrl-C to exit selection: 4
+Shrub of root/cimv2:CIM_RegisteredProfile.InstanceID="Array+1.8.0": paths
++--------------------+------------------------------+--------------------+-----------------------+--------------------------------------------------------------------------------------+
+| Role               | AssocClass                   | ResultRole         | ResultClass           | Assoc Inst paths                                                                     |
+|--------------------+------------------------------+--------------------+-----------------------+--------------------------------------------------------------------------------------|
+| ConformantStandard | CIM_ElementConformsToProfile | ManagedElement     | CIM_ComputerSystem    | CIM_ComputerSystem.CreationClassName="CIM_ComputerSystem",Name="ACME+CF2A5091300089" |
+| ManagedElement     | CIM_ElementConformsToProfile | ConformantStandard | CIM_RegisteredProfile | CIM_RegisteredProfile.InstanceID="SMI-S+1.8.0"                                       |
++--------------------+------------------------------+--------------------+-----------------------+--------------------------------------------------------------------------------------+
+pywbemcli> instance shrub CIM_RegisteredProfile.? --ac CIM_ElementConformsToProfile
+Pick Instance name to process
+0: root/cimv2:CIM_RegisteredProfile.InstanceID="SMI-S+1.8.0"
+1: root/cimv2:CIM_RegisteredProfile.InstanceID="Server+1.7.0"
+2: root/cimv2:CIM_RegisteredProfile.InstanceID="Profile Registration+1.7.0"
+3: root/cimv2:CIM_RegisteredProfile.InstanceID="Indications+1.2.2"
+4: root/cimv2:CIM_RegisteredProfile.InstanceID="Array+1.8.0"
+5: root/cimv2:CIM_RegisteredProfile.InstanceID="Physical Package+1.8.0"
+6: root/cimv2:CIM_RegisteredProfile.InstanceID="Block Services+1.8.0"
+7: root/cimv2:CIM_RegisteredProfile.InstanceID="FC Target Ports+1.8.0"
+8: root/cimv2:CIM_RegisteredProfile.InstanceID="Software+1.8.0"
+9: root/cimv2:CIM_RegisteredProfile.InstanceID="Disk Drive Lite+1.8.0"
+10: root/cimv2:CIM_RegisteredProfile.InstanceID="Block Server Performance+1.8.0"
+11: root/cimv2:CIM_RegisteredProfile.InstanceID="Multiple Computer System+1.2.0"
+12: root/cimv2:CIM_RegisteredProfile.InstanceID="WBEM Server 1.0.1i"
+13: root/cimv2:CIM_RegisteredProfile.InstanceID="DMTF Profile Registration+1.0"
+14: root/cimv2:CIM_RegisteredProfile.InstanceID="IP Interface 1.1.1"
+15: root/cimv2:CIM_RegisteredProfile.InstanceID="Job Control 1.0.0"
+16: root/cimv2:CIM_RegisteredProfile.InstanceID="Role Based Authorization 1.0.0"
+17: root/cimv2:CIM_RegisteredProfile.InstanceID="Simple Identity Management 1.1.0"
+Input integer between 0 and 17 or Ctrl-C to exit selection: 12
+Shrub of root/cimv2:CIM_RegisteredProfile.InstanceID="WBEM Server 1.0.1i": paths
++--------------------+------------------------------+--------------------+-----------------------+-----------------------------------------------------------------+
+| Role               | AssocClass                   | ResultRole         | ResultClass           | Assoc Inst paths                                                |
+|--------------------+------------------------------+--------------------+-----------------------+-----------------------------------------------------------------|
+| ConformantStandard | CIM_ElementConformsToProfile | ManagedElement     | CIM_System            | CIM_System.CreationClassName="CIM_System",Name="10.336.643.144" |
+| ManagedElement     | CIM_ElementConformsToProfile | ConformantStandard | CIM_RegisteredProfile | CIM_RegisteredProfile.InstanceID="SMI-S+1.8.0"                  |
++--------------------+------------------------------+--------------------+-----------------------+-----------------------------------------------------------------+
+pywbemcli> instance shrub CIM_RegisteredProfile.? --ac CIM_ReferencedProfile
+Pick Instance name to process
+0: root/cimv2:CIM_RegisteredProfile.InstanceID="SMI-S+1.8.0"
+1: root/cimv2:CIM_RegisteredProfile.InstanceID="Server+1.7.0"
+2: root/cimv2:CIM_RegisteredProfile.InstanceID="Profile Registration+1.7.0"
+3: root/cimv2:CIM_RegisteredProfile.InstanceID="Indications+1.2.2"
+4: root/cimv2:CIM_RegisteredProfile.InstanceID="Array+1.8.0"
+5: root/cimv2:CIM_RegisteredProfile.InstanceID="Physical Package+1.8.0"
+6: root/cimv2:CIM_RegisteredProfile.InstanceID="Block Services+1.8.0"
+7: root/cimv2:CIM_RegisteredProfile.InstanceID="FC Target Ports+1.8.0"
+8: root/cimv2:CIM_RegisteredProfile.InstanceID="Software+1.8.0"
+9: root/cimv2:CIM_RegisteredProfile.InstanceID="Disk Drive Lite+1.8.0"
+10: root/cimv2:CIM_RegisteredProfile.InstanceID="Block Server Performance+1.8.0"
+11: root/cimv2:CIM_RegisteredProfile.InstanceID="Multiple Computer System+1.2.0"
+12: root/cimv2:CIM_RegisteredProfile.InstanceID="WBEM Server 1.0.1i"
+13: root/cimv2:CIM_RegisteredProfile.InstanceID="DMTF Profile Registration+1.0"
+14: root/cimv2:CIM_RegisteredProfile.InstanceID="IP Interface 1.1.1"
+15: root/cimv2:CIM_RegisteredProfile.InstanceID="Job Control 1.0.0"
+16: root/cimv2:CIM_RegisteredProfile.InstanceID="Role Based Authorization 1.0.0"
+17: root/cimv2:CIM_RegisteredProfile.InstanceID="Simple Identity Management 1.1.0"
+Input integer between 0 and 17 or Ctrl-C to exit selection: 12
+Shrub of root/cimv2:CIM_RegisteredProfile.InstanceID="WBEM Server 1.0.1i": paths
++------------+-----------------------+--------------+-----------------------+---------------------------------------------------------------------+
+| Role       | AssocClass            | ResultRole   | ResultClass           | Assoc Inst paths                                                    |
+|------------+-----------------------+--------------+-----------------------+---------------------------------------------------------------------|
+| Antecedent | CIM_ReferencedProfile | Dependent    | CIM_RegisteredProfile | CIM_RegisteredProfile.InstanceID="DMTF Profile Registration+1.0"    |
+|            |                       |              |                       | CIM_RegisteredProfile.InstanceID="IP Interface 1.1.1"               |
+|            |                       |              |                       | CIM_RegisteredProfile.InstanceID="Indications+1.2.2"                |
+|            |                       |              |                       | CIM_RegisteredProfile.InstanceID="Job Control 1.0.0"                |
+|            |                       |              |                       | CIM_RegisteredProfile.InstanceID="Role Based Authorization 1.0.0"   |
+|            |                       |              |                       | CIM_RegisteredProfile.InstanceID="Simple Identity Management 1.1.0" |
++------------+-----------------------+--------------+-----------------------+---------------------------------------------------------------------+
+pywbemcli> instance shrub CIM_RegisteredProfile.? --ac CIM_ReferencedProfile
+Pick Instance name to process
+0: root/cimv2:CIM_RegisteredProfile.InstanceID="SMI-S+1.8.0"
+1: root/cimv2:CIM_RegisteredProfile.InstanceID="Server+1.7.0"
+2: root/cimv2:CIM_RegisteredProfile.InstanceID="Profile Registration+1.7.0"
+3: root/cimv2:CIM_RegisteredProfile.InstanceID="Indications+1.2.2"
+4: root/cimv2:CIM_RegisteredProfile.InstanceID="Array+1.8.0"
+5: root/cimv2:CIM_RegisteredProfile.InstanceID="Physical Package+1.8.0"
+6: root/cimv2:CIM_RegisteredProfile.InstanceID="Block Services+1.8.0"
+7: root/cimv2:CIM_RegisteredProfile.InstanceID="FC Target Ports+1.8.0"
+8: root/cimv2:CIM_RegisteredProfile.InstanceID="Software+1.8.0"
+9: root/cimv2:CIM_RegisteredProfile.InstanceID="Disk Drive Lite+1.8.0"
+10: root/cimv2:CIM_RegisteredProfile.InstanceID="Block Server Performance+1.8.0"
+11: root/cimv2:CIM_RegisteredProfile.InstanceID="Multiple Computer System+1.2.0"
+12: root/cimv2:CIM_RegisteredProfile.InstanceID="WBEM Server 1.0.1i"
+13: root/cimv2:CIM_RegisteredProfile.InstanceID="DMTF Profile Registration+1.0"
+14: root/cimv2:CIM_RegisteredProfile.InstanceID="IP Interface 1.1.1"
+15: root/cimv2:CIM_RegisteredProfile.InstanceID="Job Control 1.0.0"
+16: root/cimv2:CIM_RegisteredProfile.InstanceID="Role Based Authorization 1.0.0"
+17: root/cimv2:CIM_RegisteredProfile.InstanceID="Simple Identity Management 1.1.0"
+Input integer between 0 and 17 or Ctrl-C to exit selection: 1
+Shrub of root/cimv2:CIM_RegisteredProfile.InstanceID="Server+1.7.0": paths
++------------+-----------------------+--------------+-----------------------+---------------------------------------------------------------+
+| Role       | AssocClass            | ResultRole   | ResultClass           | Assoc Inst paths                                              |
+|------------+-----------------------+--------------+-----------------------+---------------------------------------------------------------|
+| Antecedent | CIM_ReferencedProfile | Dependent    | CIM_RegisteredProfile | CIM_RegisteredProfile.InstanceID="Indications+1.2.2"          |
+|            |                       |              |                       | CIM_RegisteredProfile.InstanceID="Profile Registration+1.7.0" |
++------------+-----------------------+--------------+-----------------------+---------------------------------------------------------------+
+pywbemcli> instance enumerate CIM_Account --pl Name,Userid,UserPassword,OrganizationName,RequestedState,EnabledState
+Instances: CIM_Account
++---------------------+----------------+--------------------+------------------+----------+----------------+
+| Name                | EnabledState   | OrganizationName   | RequestedState   | UserID   | UserPassword   |
+|---------------------+----------------+--------------------+------------------+----------+----------------|
+| "10.336.643.144+00" | 2 (Enabled)    | "Client Lib"       | 2 (Enabled)      | "Jane"   | "0o173"        |
+| "10.336.643.144+01" | 2 (Enabled)    | "Storage Systems"  | 2 (Enabled)      | "John"   | "0o710"        |
++---------------------+----------------+--------------------+------------------+----------+----------------+
+
+pywbemcli> instance shrub CIM_Account.?
+Pick Instance name to process
+0: root/cimv2:CIM_Account.CreationClassName="CIM_Account",Name="10.336.643.144+00",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+1: root/cimv2:CIM_Account.CreationClassName="CIM_Account",Name="10.336.643.144+01",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+Input integer between 0 and 1 or Ctrl-C to exit selection: 0
+Shrub of root/cimv2:CIM_Account.CreationClassName="CIM_Account",Name="10.336.643.144+00",SystemCreationClassName="CIM_System",SystemName="10.336.643.144": paths
++----------------+----------------------+----------------+---------------+-----------------------------------------------------------------+
+| Role           | AssocClass           | ResultRole     | ResultClass   | Assoc Inst paths                                                |
+|----------------+----------------------+----------------+---------------+-----------------------------------------------------------------|
+| PartComponent  | CIM_AccountOnSystem  | GroupComponent | CIM_System    | CIM_System.CreationClassName="CIM_System",Name="10.336.643.144" |
+| ManagedElement | CIM_AssignedIdentity | IdentityInfo   | CIM_Identity  | CIM_Identity.InstanceID="Ident00"                               |
++----------------+----------------------+----------------+---------------+-----------------------------------------------------------------+
+pywbemcli> instance enumerate CIM_Identity
+Instances: CIM_Identity
++--------------+---------------+
+| InstanceID   | ElementName   |
+|--------------+---------------|
+| "Ident00"    | "Jane Doe"    |
+| "Ident01"    | "John Doe"    |
++--------------+---------------+
+pywbemcli> instance shrub CIM_Identity.?
+Pick Instance name to process
+0: root/cimv2:CIM_Identity.InstanceID="Ident00"
+1: root/cimv2:CIM_Identity.InstanceID="Ident01"
+Input integer between 0 and 1 or Ctrl-C to exit selection: 0
+Shrub of root/cimv2:CIM_Identity.InstanceID="Ident00": paths
++-----------------+---------------------------+------------------+------------------------------+----------------------------------------------------+
+| Role            | AssocClass                | ResultRole       | ResultClass                  | Assoc Inst paths                                   |
+|-----------------+---------------------------+------------------+------------------------------+----------------------------------------------------|
+| IdentityInfo    | CIM_AssignedIdentity      | ManagedElement   | CIM_Account                  | /:CIM_Account.                                     |
+|                 |                           |                  |                              | SystemCreationClassName="CIM_System",              |
+|                 |                           |                  |                              | SystemName="10.336.643.144",                       |
+|                 |                           |                  |                              | CreationClassName="CIM_Account",                   |
+|                 |                           |                  |                              | Name="10.336.643.144+00"                           |
+| Antecedent      | CIM_ConcreteDependency    | Dependent        | CIM_Role                     | CIM_Role.CreationClassName="CIM_Role",Name="Admin" |
+| AffectedElement | CIM_ServiceAffectsElement | AffectingElement | CIM_AccountManagementService | /:CIM_AccountManagementService.                    |
+|                 |                           |                  |                              | SystemCreationClassName="CIM_System",              |
+|                 |                           |                  |                              | SystemName="10.336.643.144",                       |
+|                 |                           |                  |                              | CreationClassName="CIM_AccountManagementService",  |
+|                 |                           |                  |                              | Name="Account Management Service"                  |
++-----------------+---------------------------+------------------+------------------------------+----------------------------------------------------+
+pywbemcli> instance enumerate CIM_Role
+Instances: CIM_Role
++---------------------+---------+-----------------+-------------------------+-----------------------+
+| CreationClassName   | Name    | CommonName      | ElementName             | RoleCharacteristics   |
+|---------------------+---------+-----------------+-------------------------+-----------------------|
+| "CIM_Role"          | "Admin" | "Administrator" | "Storage Administrator" | 2 (Static)            |
+| "CIM_Role"          | "User"  | "User"          | "Storage User"          | 2 (Static)            |
++---------------------+---------+-----------------+-------------------------+-----------------------+
+
+pywbemcli> -o mof instance shrub CIM_Role.?
+Pick Instance name to process
+0: root/cimv2:CIM_Role.CreationClassName="CIM_Role",Name="Admin"
+1: root/cimv2:CIM_Role.CreationClassName="CIM_Role",Name="User"
+Input integer between 0 and 1 or Ctrl-C to exit selection: 0
+CIM_Role.CreationClassName="CIM_Role",Name="Admin"
+ +-- Dependent(Role)
+ |   +-- CIM_ConcreteDependency(AssocClass)
+ |       +-- Antecedent(ResultRole)
+ |           +-- CIM_Identity(ResultClass)(1 insts)
+ |               +-- /:CIM_Identity.InstanceID="Ident00"
+ +-- OwnedElement(Role)
+ |   +-- CIM_OwningCollectionElement(AssocClass)
+ |       +-- OwningElement(ResultRole)
+ |           +-- CIM_System(ResultClass)(1 insts)
+ |               +-- /:CIM_System.~,Name="10.336.643.144"
+ +-- DefiningRole(Role)
+ |   +-- CIM_RoleLimitedToTarget(AssocClass)
+ |       +-- TargetElement(ResultRole)
+ |           +-- CIM_ComputerSystem(ResultClass)(1 insts)
+ |           |   +-- /:CIM_ComputerSystem.~,Name="ACME+CF2A5091300089"
+ |           +-- CIM_System(ResultClass)(2 insts)
+ |               +-- /:CIM_ComputerSystem.~,Name="ACME+CF2A5091300089"
+ |               +-- /:CIM_System.~,Name="10.336.643.144"
+ +-- AffectedElement(Role)
+     +-- CIM_ServiceAffectsElement(AssocClass)
+         +-- AffectingElement(ResultRole)
+             +-- CIM_RoleBasedAuthorizationService(ResultClass)(1 insts)
+                 +-- /:CIM_RoleBasedAuthorizationService.~,Name="RBA Service",~,~
+pywbemcli> instance enumerate CIM_IndicationFilter --pl SystemName,Name,SourceNamespaces,IndividualSubscriptionSupported
+Instances: CIM_IndicationFilter
++--------------------------------------+------------------+-----------------------------------+--------------------+
+| Name                                 | SystemName       | IndividualSubscriptionSupported   | SourceNamespaces   |
+|--------------------------------------+------------------+-----------------------------------+--------------------|
+| "Change in Pool TotalManagedSpace"   | "10.336.643.144" | true                              | "cim/v2"           |
+| "Disk Drive Creation"                | "10.336.643.144" | true                              | "cim/v2"           |
+| "Disk Drive Deletion"                | "10.336.643.144" | true                              | "cim/v2"           |
+| "Disk Drive Status change"           | "10.336.643.144" | true                              | "cim/v2"           |
+| "FC Port Creation"                   | "10.336.643.144" | true                              | "cim/v2"           |
+| "FC Port Deletion"                   | "10.336.643.144" | true                              | "cim/v2"           |
+| "FC Port Status change"              | "10.336.643.144" | true                              | "cim/v2"           |
+| "Pool Creation"                      | "10.336.643.144" | true                              | "cim/v2"           |
+| "Pool Deletion"                      | "10.336.643.144" | true                              | "cim/v2"           |
+| "Pool capacity condition has been "  | "10.336.643.144" | true                              | "cim/v2"           |
+| "cleared"                            |                  |                                   |                    |
+| "Pool capacity has run out"          | "10.336.643.144" | true                              | "cim/v2"           |
+| "Pool capacity is running low."      | "10.336.643.144" | true                              | "cim/v2"           |
+| "Status of System Redundancy has "   | "10.336.643.144" | true                              | "cim/v2"           |
+| "changed"                            |                  |                                   |                    |
+| "Storage Volume has failed"          | "10.336.643.144" | true                              | "cim/v2"           |
+| "Storage Volume returned to normal " | "10.336.643.144" | true                              | "cim/v2"           |
+| "service"                            |                  |                                   |                    |
+| "StorageVolume has degraded"         | "10.336.643.144" | true                              | "cim/v2"           |
+| "System Creation"                    | "10.336.643.144" | true                              | "cim/v2"           |
+| "System Deletion"                    | "10.336.643.144" | true                              | "cim/v2"           |
+| "System Status Change"               | "10.336.643.144" | true                              | "cim/v2"           |
++--------------------------------------+------------------+-----------------------------------+--------------------+
+pywbemcli> instance shrub CIM_IndicationFilter.?
+Pick Instance name to process
+0: root/cimv2:CIM_IndicationFilter.CreationClassName="CIM_IndicationFilter",Name="System Creation",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+1: root/cimv2:CIM_IndicationFilter.CreationClassName="CIM_IndicationFilter",Name="System Deletion",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+2: root/cimv2:CIM_IndicationFilter.CreationClassName="CIM_IndicationFilter",Name="System Status Change",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+3: root/cimv2:CIM_IndicationFilter.CreationClassName="CIM_IndicationFilter",Name="StorageVolume has degraded",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+4: root/cimv2:CIM_IndicationFilter.CreationClassName="CIM_IndicationFilter",Name="Storage Volume has failed",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+5: root/cimv2:CIM_IndicationFilter.CreationClassName="CIM_IndicationFilter",Name="Storage Volume returned to normal service",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+6: root/cimv2:CIM_IndicationFilter.CreationClassName="CIM_IndicationFilter",Name="Pool Creation",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+7: root/cimv2:CIM_IndicationFilter.CreationClassName="CIM_IndicationFilter",Name="Pool Deletion",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+8: root/cimv2:CIM_IndicationFilter.CreationClassName="CIM_IndicationFilter",Name="Change in Pool TotalManagedSpace",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+9: root/cimv2:CIM_IndicationFilter.CreationClassName="CIM_IndicationFilter",Name="Pool capacity is running low.",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+10: root/cimv2:CIM_IndicationFilter.CreationClassName="CIM_IndicationFilter",Name="Pool capacity has run out",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+11: root/cimv2:CIM_IndicationFilter.CreationClassName="CIM_IndicationFilter",Name="Pool capacity condition has been cleared",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+12: root/cimv2:CIM_IndicationFilter.CreationClassName="CIM_IndicationFilter",Name="Disk Drive Creation",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+13: root/cimv2:CIM_IndicationFilter.CreationClassName="CIM_IndicationFilter",Name="Disk Drive Deletion",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+14: root/cimv2:CIM_IndicationFilter.CreationClassName="CIM_IndicationFilter",Name="Disk Drive Status change",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+15: root/cimv2:CIM_IndicationFilter.CreationClassName="CIM_IndicationFilter",Name="FC Port Creation",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+16: root/cimv2:CIM_IndicationFilter.CreationClassName="CIM_IndicationFilter",Name="FC Port Status change",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+17: root/cimv2:CIM_IndicationFilter.CreationClassName="CIM_IndicationFilter",Name="FC Port Deletion",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+18: root/cimv2:CIM_IndicationFilter.CreationClassName="CIM_IndicationFilter",Name="Status of System Redundancy has changed",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+Input integer between 0 and 18 or Ctrl-C to exit selection: 12
+Shrub of root/cimv2:CIM_IndicationFilter.CreationClassName="CIM_IndicationFilter",Name="Disk Drive Creation",SystemCreationClassName="CIM_System",SystemName="10.336.643.144": paths
++-----------------+---------------------------+------------------+-----------------------+----------------------------------------------------------------------+
+| Role            | AssocClass                | ResultRole       | ResultClass           | Assoc Inst paths                                                     |
+|-----------------+---------------------------+------------------+-----------------------+----------------------------------------------------------------------|
+| Member          | CIM_MemberOfCollection    | Collection       | CIM_FilterCollection  | CIM_FilterCollection.InstanceID="10.336.643.144:DDLFilterCollection" |
+| AffectedElement | CIM_ServiceAffectsElement | AffectingElement | CIM_IndicationService | /:CIM_IndicationService.                                             |
+|                 |                           |                  |                       | SystemCreationClassName="CIM_System",                                |
+|                 |                           |                  |                       | SystemName="10.336.643.144",                                         |
+|                 |                           |                  |                       | CreationClassName="CIM_IndicationService",                           |
+|                 |                           |                  |                       | Name="Indication Service"                                            |
++-----------------+---------------------------+------------------+-----------------------+----------------------------------------------------------------------+
+pywbemcli> instance enumerate CIM_IndicationService --pl Name,FilterCreationEnabled,DeliveryRetryAttempts,DeliveryRetryInterval,SubscriptionRemovalAction,Subscript
+ionRemovalTimeInterval
+Instances: CIM_IndicationService
++----------------------+-------------------------+-------------------------+-------------------------+-----------------------------+-----------------------------------+
+| Name                 |   DeliveryRetryAttempts |   DeliveryRetryInterval | FilterCreationEnabled   | SubscriptionRemovalAction   |   SubscriptionRemovalTimeInterval |
+|----------------------+-------------------------+-------------------------+-------------------------+-----------------------------+-----------------------------------|
+| "Indication Service" |                       3 |                      30 | true                    | 4 (Ignore)                  |                                 0 |
++----------------------+-------------------------+-------------------------+-------------------------+-----------------------------+-----------------------------------+
+pywbemcli> instance enumerate CIM_FilterCollection
+Instances: CIM_FilterCollection
++-----------------------------------------+--------------------------------------------------+
+| InstanceID                              | CollectionName                                   |
+|-----------------------------------------+--------------------------------------------------|
+| "10.336.643.144:ArrayFilterCollection"  | "SNIA:Array:FilterCollection"                    |
+| "10.336.643.144:BSFilterCollection"     | "SNIA:Block Services:FilterCollection"           |
+| "10.336.643.144:DDLFilterCollection"    | "SNIA:Disk Drive Lite:FilterCollection"          |
+| "10.336.643.144:FCPFilterCollection"    | "SNIA:FC Target Ports:FilterCollection"          |
+| "10.336.643.144:MCSFilterCollection"    | "SNIA:Multiple Computer System:FilterCollection" |
+| "10.336.643.144:StaticFilterCollection" | "StaticFilterCollection"                         |
++-----------------------------------------+--------------------------------------------------+
+pywbemcli> instance shrub CIM_FilterCollection.? --ac CIM_ConcreteDependency
+Pick Instance name to process
+0: root/cimv2:CIM_FilterCollection.InstanceID="10.336.643.144:StaticFilterCollection"
+1: root/cimv2:CIM_FilterCollection.InstanceID="10.336.643.144:ArrayFilterCollection"
+2: root/cimv2:CIM_FilterCollection.InstanceID="10.336.643.144:BSFilterCollection"
+3: root/cimv2:CIM_FilterCollection.InstanceID="10.336.643.144:DDLFilterCollection"
+4: root/cimv2:CIM_FilterCollection.InstanceID="10.336.643.144:FCPFilterCollection"
+5: root/cimv2:CIM_FilterCollection.InstanceID="10.336.643.144:MCSFilterCollection"
+Input integer between 0 and 5 or Ctrl-C to exit selection: 1
+Shrub of root/cimv2:CIM_FilterCollection.InstanceID="10.336.643.144:ArrayFilterCollection": paths
++-----------+------------------------+--------------+-----------------------+------------------------------------------------+
+| Role      | AssocClass             | ResultRole   | ResultClass           | Assoc Inst paths                               |
+|-----------+------------------------+--------------+-----------------------+------------------------------------------------|
+| Dependent | CIM_ConcreteDependency | Antecedent   | CIM_RegisteredProfile | CIM_RegisteredProfile.InstanceID="Array+1.8.0" |
++-----------+------------------------+--------------+-----------------------+------------------------------------------------+
+pywbemcli> instance shrub CIM_FilterCollection.? --ac CIM_MemberOfCollection
+Pick Instance name to process
+0: root/cimv2:CIM_FilterCollection.InstanceID="10.336.643.144:StaticFilterCollection"
+1: root/cimv2:CIM_FilterCollection.InstanceID="10.336.643.144:ArrayFilterCollection"
+2: root/cimv2:CIM_FilterCollection.InstanceID="10.336.643.144:BSFilterCollection"
+3: root/cimv2:CIM_FilterCollection.InstanceID="10.336.643.144:DDLFilterCollection"
+4: root/cimv2:CIM_FilterCollection.InstanceID="10.336.643.144:FCPFilterCollection"
+5: root/cimv2:CIM_FilterCollection.InstanceID="10.336.643.144:MCSFilterCollection"
+Input integer between 0 and 5 or Ctrl-C to exit selection: 3
+Shrub of root/cimv2:CIM_FilterCollection.InstanceID="10.336.643.144:DDLFilterCollection": paths
++------------+------------------------+--------------+----------------------+-------------------------------------------------------------------------+
+| Role       | AssocClass             | ResultRole   | ResultClass          | Assoc Inst paths                                                        |
+|------------+------------------------+--------------+----------------------+-------------------------------------------------------------------------|
+| Collection | CIM_MemberOfCollection | Member       | CIM_IndicationFilter | /:CIM_IndicationFilter.                                                 |
+|            |                        |              |                      | SystemCreationClassName="CIM_System",                                   |
+|            |                        |              |                      | SystemName="10.336.643.144",                                            |
+|            |                        |              |                      | CreationClassName="CIM_IndicationFilter",                               |
+|            |                        |              |                      | Name="Disk Drive Creation"                                              |
+|            |                        |              |                      | /:CIM_IndicationFilter.                                                 |
+|            |                        |              |                      | SystemCreationClassName="CIM_System",                                   |
+|            |                        |              |                      | SystemName="10.336.643.144",                                            |
+|            |                        |              |                      | CreationClassName="CIM_IndicationFilter",                               |
+|            |                        |              |                      | Name="Disk Drive Deletion"                                              |
+|            |                        |              |                      | /:CIM_IndicationFilter.                                                 |
+|            |                        |              |                      | SystemCreationClassName="CIM_System",                                   |
+|            |                        |              |                      | SystemName="10.336.643.144",                                            |
+|            |                        |              |                      | CreationClassName="CIM_IndicationFilter",                               |
+|            |                        |              |                      | Name="Disk Drive Status change"                                         |
+| Member     | CIM_MemberOfCollection | Collection   | CIM_FilterCollection | CIM_FilterCollection.InstanceID="10.336.643.144:StaticFilterCollection" |
++------------+------------------------+--------------+----------------------+-------------------------------------------------------------------------+
+pywbemcli> instance enumerate CIM_WBEMProtocolServiceCapabilities --pl InstanceID,ListeningPortManagementSupported
+Instances: CIM_CIMXMLCapabilities
++-------------------------------+------------------------------------+
+| InstanceID                    | ListeningPortManagementSupported   |
+|-------------------------------+------------------------------------|
+| "CIMXMLCapabilities Instance" | true                               |
++-------------------------------+------------------------------------+
+pywbemcli> instance enumerate CIM_WBEMProtocolServiceCapabilities --pl InstanceID,AuthenticationMechanismsSupported,MaxConnections,RequestedStatesSupported
+Instances: CIM_CIMXMLCapabilities
++-------------------------------+-------------------------------------+------------------+---------------------------------------+
+| InstanceID                    | AuthenticationMechanismsSupported   |   MaxConnections | RequestedStatesSupported              |
+|-------------------------------+-------------------------------------+------------------+---------------------------------------|
+| "CIMXMLCapabilities Instance" | 0 (Unknown)                         |                1 | 2 (Enabled), 3 (Disabled), 11 (Reset) |
++-------------------------------+-------------------------------------+------------------+---------------------------------------+
+pywbemcli> instance enumerate CIM_WBEMProtocolServiceCapabilities --pl InstanceID,WBEMProtocolVersionsSupported,GenericOperationCapabilities
+Instances: CIM_CIMXMLCapabilities
++-------------------------------+------------------------------------------------------+---------------------------------+
+| InstanceID                    | GenericOperationCapabilities                         | WBEMProtocolVersionsSupported   |
+|-------------------------------+------------------------------------------------------+---------------------------------|
+| "CIMXMLCapabilities Instance" | "instance of "                                       | "2.0.0"                         |
+|                               | "CIM_GenericOperationCapabilitiesStructure {\n   "   |                                 |
+|                               | "FQLSupported = false;\n   CQLSupport = { 0 };\n   " |                                 |
+|                               | "OperationsSupported = { 2, 3, 4, 5, 6, 7, 8, 9, "   |                                 |
+|                               | "10, 11, 12, 13, 14, 15, 16,\n      17, 18, 19, "    |                                 |
+|                               | "20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, "   |                                 |
+|                               | "32, 33, 34,\n      35, 36, 37, 38, 39, 40 };\n};\n" |                                 |
++-------------------------------+------------------------------------------------------+---------------------------------+
+pywbemcli> instance enumerate CIM_ProtocolService --pl Name,EnabledState,MaxConnections,RequestedState,OperationalStatus,HealthState
+Instances: CIM_ProtocolService
++---------------------------+--------------------+---------------+------------------+---------------------+---------------------+
+| Name                      | EnabledState       | HealthState   |   MaxConnections | OperationalStatus   | RequestedState      |
+|---------------------------+--------------------+---------------+------------------+---------------------+---------------------|
+| "CIMXML Protocol Service" | 5 (Not Applicable) | 5 (OK)        |                1 | 2 (OK)              | 12 (Not Applicable) |
++---------------------------+--------------------+---------------+------------------+---------------------+---------------------+
+pywbemcli> -o mof instance shrub CIM_ProtocolService.?
+CIM_ProtocolService.CreationClassName="CIM_ProtocolService",Name="CIMXML Protocol Service",SystemCreationClassName="CIM_System",SystemName="10.336.643.144"
+ +-- ManagedElement(Role)
+ |   +-- CIM_ElementCapabilities(AssocClass)
+ |       +-- Capabilities(ResultRole)
+ |           +-- CIM_CIMXMLCapabilities(ResultClass)(1 insts)
+ |               +-- /:CIM_CIMXMLCapabilities.InstanceID="CIMXMLCapabilities Instance"
+ +-- Dependent(Role)
+ |   +-- CIM_HostedService(AssocClass)
+ |   |   +-- Antecedent(ResultRole)
+ |   |       +-- CIM_System(ResultClass)(1 insts)
+ |   |           +-- /:CIM_System.~,Name="10.336.643.144"
+ |   +-- CIM_ServiceServiceDependency(AssocClass)
+ |       +-- Antecedent(ResultRole)
+ |           +-- CIM_WBEMServer(ResultClass)(1 insts)
+ |               +-- /:CIM_WBEMServer.~,Name="WBEM Server Instance",~,~
+ +-- Antecedent(Role)
+     +-- CIM_ServiceAccessBySAP(AssocClass)
+         +-- Dependent(ResultRole)
+             +-- CIM_TCPProtocolEndpoint(ResultClass)(1 insts)
+                 +-- /:CIM_TCPProtocolEndpoint.~,Name="10.336.643.144+TCP11",~,~
+pywbemcli> instance enumerate CIM_TCPProtocolEndpoint --pl InstanceID,Name,NameFormat,OperationalStatus,ProtocolIFType,SystemName
+Instances: CIM_TCPProtocolEndpoint
++------------------------+------------------+--------------+---------------------------+---------------------+------------------+
+| Name                   | SystemName       | InstanceID   | NameFormat                | OperationalStatus   | ProtocolIFType   |
+|------------------------+------------------+--------------+---------------------------+---------------------+------------------|
+| "10.336.643.144+TCP11" | "10.336.643.144" | "TCPPE11"    | "<PortAddress>+<Protocol" | 2 (OK)              | 4111 (TCP)       |
+|                        |                  |              | "><Number>"               |                     |                  |
++------------------------+------------------+--------------+---------------------------+---------------------+------------------+
+pywbemcli>

@@ -1,0 +1,310 @@
+Microsoft Windows [Version 10.0.18363.959]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\FarmerMike>workon beta3
+(beta3) c:\Users\FarmerMike\devenv>pywbemcli -o table --name ArrayMock
+Enter 'help' for help, <CTRL-D> or ':q' to exit pywbemcli or <CTRL-r> to search history,
+pywbemcli> instance enumerate CIM_BlockStatisticsCapabilities --pl InstanceID,ElementTypesSupported,SupportedFeatures
+-Loading classes into the Mock Repository
+\Loading instances into the Mock Repository
+-DONE Loading instances into the Mock Repository
+Instances: CIM_BlockStatisticsCapabilities
++-----------------------+----------------------------------------------------------------------+---------------------------------------------------+
+| InstanceID            | ElementTypesSupported                                                | SupportedFeatures                                 |
+|-----------------------+----------------------------------------------------------------------+---------------------------------------------------|
+| "ACME+CF2A5091300089" | 2 (Computer System), 6 (Front-end Port), 8 (Volume), 10 (Disk Drive) | 3 (Client Defined Sequence), 6 (Advanced Metrics) |
++-----------------------+----------------------------------------------------------------------+---------------------------------------------------+
+pywbemcli> instance enumerate CIM_BlockStatisticsCapabilities --pl InstanceID,SynchronousMethodsSupported,ClockTickInterval
+Instances: CIM_BlockStatisticsCapabilities
++-----------------------+---------------------+-----------------------------------------------------------------------------------------------------+
+| InstanceID            |   ClockTickInterval | SynchronousMethodsSupported                                                                         |
+|-----------------------+---------------------+-----------------------------------------------------------------------------------------------------|
+| "ACME+CF2A5091300089" |              100000 | 4 (GetStatisticsCollection), 5 (Manifest Creation), 6 (Manifest Modification), 7 (Manifest Removal) |
++-----------------------+---------------------+-----------------------------------------------------------------------------------------------------+
+pywbemcli> instance shrub CIM_BlockStatisticsCapabilities.?
+Shrub of root/cimv2:CIM_BlockStatisticsCapabilities.InstanceID="ACME+CF2A5091300089": paths
++--------------+-------------------------+----------------+----------------------------+-------------------------------------------------+
+| Role         | AssocClass              | ResultRole     | ResultClass                | Assoc Inst paths                                |
+|--------------+-------------------------+----------------+----------------------------+-------------------------------------------------|
+| Capabilities | CIM_ElementCapabilities | ManagedElement | CIM_BlockStatisticsService | /:CIM_BlockStatisticsService.                   |
+|              |                         |                |                            | SystemCreationClassName="CIM_ComputerSystem",   |
+|              |                         |                |                            | SystemName="ACME+CF2A5091300089",               |
+|              |                         |                |                            | CreationClassName="CIM_BlockStatisticsService", |
+|              |                         |                |                            | Name="BlockStatisticsService"                   |
++--------------+-------------------------+----------------+----------------------------+-------------------------------------------------+
+pywbemcli> instance enumerate CIM_BlockStatisticsService --pl Name,EnabledDefault,EnabledState,RequestedState,Started,TransitioningToState
+Instances: CIM_BlockStatisticsService
++--------------------------+------------------+----------------+---------------------+-----------+------------------------+
+| Name                     | EnabledDefault   | EnabledState   | RequestedState      | Started   | TransitioningToState   |
+|--------------------------+------------------+----------------+---------------------+-----------+------------------------|
+| "BlockStatisticsService" | 2 (Enabled)      | 2 (Enabled)    | 12 (Not Applicable) | true      | 12 (Not Applicable)    |
++--------------------------+------------------+----------------+---------------------+-----------+------------------------+
+pywbemcli> instance enumerate CIM_StatisticsCollection
+Instances: CIM_StatisticsCollection
++-----------------------+-------------------------+-----------------------------+-----------------------------+
+| InstanceID            | ElementName             | SampleInterval              | TimeLastSampled             |
+|-----------------------+-------------------------+-----------------------------+-----------------------------|
+| "ACME+CF2A5091300089" | "Statistics Collection" | "00000000001500.000000:000" | "20131029094525.737000-240" |
++-----------------------+-------------------------+-----------------------------+-----------------------------+
+
+pywbemcli> -o mof instance shrub CIM_StatisticsCollection.?
+CIM_StatisticsCollection.InstanceID="ACME+CF2A5091300089"
+ +-- Statistics(Role)
+ |   +-- CIM_AssociatedBlockStatisticsManifestCollection(AssocClass)
+ |       +-- ManifestCollection(ResultRole)
+ |           +-- CIM_BlockStatisticsManifestCollection(ResultClass)(1 insts)
+ |               +-- /:CIM_BlockStatisticsManifestCollection.InstanceID="ACME+CF2A5091300089+MANIFEST_DEFAULT"
+ +-- Dependent(Role)
+ |   +-- CIM_HostedCollection(AssocClass)
+ |       +-- Antecedent(ResultRole)
+ |           +-- CIM_ComputerSystem(ResultClass)(1 insts)
+ |               +-- /:CIM_ComputerSystem.~,Name="ACME+CF2A5091300089"
+ +-- Collection(Role)
+     +-- CIM_MemberOfCollection(AssocClass)
+         +-- Member(ResultRole)
+             +-- CIM_BlockStorageStatisticalData(ResultClass)(12 insts)
+                 +-- /:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Array"
+                 +-- /:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_0"
+                 +-- /:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_1"
+                 +-- /:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_2"
+                 +-- /:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_3"
+                 +-- /:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_4"
+                 +-- /:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_5"
+                 +-- /:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_6"
+                 +-- /:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_7"
+                 +-- /:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+FEPort+SP_A:0"
+                 +-- /:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+FEPort+SP_A:1"
+                 +-- /:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Volume+00005"
+pywbemcli> instance get CIM_BlockStorageStatisticalData.? --pl InstanceID,ElementType,StatisticTime,TotalIOs,KBytesTransferred
+Pick Instance name to process
+0: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Array"
+1: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+FEPort+SP_A:0"
+2: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+FEPort+SP_A:1"
+3: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Volume+00005"
+4: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_0"
+5: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_1"
+6: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_2"
+7: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_3"
+8: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_4"
+9: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_5"
+10: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_6"
+11: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_7"
+Input integer between 0 and 11 or Ctrl-C to exit selection: 0
+Instances: CIM_BlockStorageStatisticalData
++-----------------------------+---------------------+---------------------+-----------------------------+------------+
+| InstanceID                  | ElementType         |   KBytesTransferred | StatisticTime               |   TotalIOs |
+|-----------------------------+---------------------+---------------------+-----------------------------+------------|
+| "ACME+CF2A5091300089+Array" | 2 (Computer System) |                  66 | "20131029094506.283000-240" |        132 |
++-----------------------------+---------------------+---------------------+-----------------------------+------------+
+pywbemcli> instance get CIM_BlockStorageStatisticalData.? --pl InstanceID,ElementType,ReadIOs,ReadHitIOs,KBytesRead,WriteIOs,WriteHitIOs,KBytesWritten
+Pick Instance name to process
+0: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Array"
+1: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+FEPort+SP_A:0"
+2: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+FEPort+SP_A:1"
+3: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Volume+00005"
+4: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_0"
+5: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_1"
+6: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_2"
+7: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_3"
+8: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_4"
+9: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_5"
+10: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_6"
+11: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_7"
+Input integer between 0 and 11 or Ctrl-C to exit selection: 0
+Instances: CIM_BlockStorageStatisticalData
++--------------------+---------------------+--------------+-----------------+--------------+-----------+---------------+------------+
+| InstanceID         | ElementType         |   KBytesRead |   KBytesWritten |   ReadHitIOs |   ReadIOs |   WriteHitIOs |   WriteIOs |
+|--------------------+---------------------+--------------+-----------------+--------------+-----------+---------------+------------|
+| "ACME+CF2A5091300" | 2 (Computer System) |           66 |               0 |      1844272 |       132 |       1845899 |          0 |
+| "089+Array"        |                     |              |                 |              |           |               |            |
++--------------------+---------------------+--------------+-----------------+--------------+-----------+---------------+------------+
+pywbemcli> instance get CIM_BlockStorageStatisticalData.? --pl InstanceID,ElementType,StatisticTime,TotalIOs,KBytesTransferred
+Pick Instance name to process
+0: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Array"
+1: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+FEPort+SP_A:0"
+2: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+FEPort+SP_A:1"
+3: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Volume+00005"
+4: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_0"
+5: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_1"
+6: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_2"
+7: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_3"
+8: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_4"
+9: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_5"
+10: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_6"
+11: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_7"
+Input integer between 0 and 11 or Ctrl-C to exit selection: 1
+Instances: CIM_BlockStorageStatisticalData
++--------------------------------+--------------------+---------------------+-----------------------------+------------+
+| InstanceID                     | ElementType        |   KBytesTransferred | StatisticTime               |   TotalIOs |
+|--------------------------------+--------------------+---------------------+-----------------------------+------------|
+| "ACME+CF2A5091300089+FEPort+S" | 6 (Front-end Port) |                  33 | "20131029094523.599000-240" |         67 |
+| "P_A:0"                        |                    |                     |                             |            |
++--------------------------------+--------------------+---------------------+-----------------------------+------------+
+pywbemcli> instance get CIM_BlockStorageStatisticalData.? --pl InstanceID,ElementType,IOTimeCounter
+Pick Instance name to process
+0: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Array"
+1: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+FEPort+SP_A:0"
+2: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+FEPort+SP_A:1"
+3: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Volume+00005"
+4: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_0"
+5: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_1"
+6: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_2"
+7: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_3"
+8: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_4"
+9: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_5"
+10: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_6"
+11: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_7"
+Input integer between 0 and 11 or Ctrl-C to exit selection: 1
+Instances: CIM_BlockStorageStatisticalData
++-------------------------------------+--------------------+-----------------+
+| InstanceID                          | ElementType        |   IOTimeCounter |
+|-------------------------------------+--------------------+-----------------|
+| "ACME+CF2A5091300089+FEPort+SP_A:0" | 6 (Front-end Port) |             132 |
++-------------------------------------+--------------------+-----------------+
+pywbemcli> instance get CIM_BlockStorageStatisticalData.? --pl InstanceID,ElementType,StatisticTime,TotalIOs,KBytesTransferred,ReadIOs,WriteIOs
+Pick Instance name to process
+0: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Array"
+1: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+FEPort+SP_A:0"
+2: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+FEPort+SP_A:1"
+3: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Volume+00005"
+4: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_0"
+5: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_1"
+6: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_2"
+7: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_3"
+8: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_4"
+9: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_5"
+10: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_6"
+11: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_7"
+Input integer between 0 and 11 or Ctrl-C to exit selection: 3
+Instances: CIM_BlockStorageStatisticalData
++-----------------------+---------------+---------------------+-----------+-----------------------+------------+------------+
+| InstanceID            | ElementType   |   KBytesTransferred |   ReadIOs | StatisticTime         |   TotalIOs |   WriteIOs |
+|-----------------------+---------------+---------------------+-----------+-----------------------+------------+------------|
+| "ACME+CF2A5091300089" | 8 (Volume)    |                   0 |         0 | "20131029094519.0910" |          0 |          0 |
+| "+Volume+00005"       |               |                     |           | "00-240"              |            |            |
++-----------------------+---------------+---------------------+-----------+-----------------------+------------+------------+
+
+pywbemcli> instance get CIM_BlockStorageStatisticalData.? --pl InstanceID,ElementType,IOTimeCounter,KBytesRead,KBytesWritten
+Pick Instance name to process
+0: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Array"
+1: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+FEPort+SP_A:0"
+2: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+FEPort+SP_A:1"
+3: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Volume+00005"
+4: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_0"
+5: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_1"
+6: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_2"
+7: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_3"
+8: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_4"
+9: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_5"
+10: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_6"
+11: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_7"
+Input integer between 0 and 11 or Ctrl-C to exit selection: 3
+Instances: CIM_BlockStorageStatisticalData
++--------------------------------+---------------+-----------------+--------------+-----------------+
+| InstanceID                     | ElementType   |   IOTimeCounter |   KBytesRead |   KBytesWritten |
+|--------------------------------+---------------+-----------------+--------------+-----------------|
+| "ACME+CF2A5091300089+Volume+0" | 8 (Volume)    |             438 |            0 |               0 |
+| "0005"                         |               |                 |              |                 |
++--------------------------------+---------------+-----------------+--------------+-----------------+
+pywbemcli> instance get CIM_BlockStorageStatisticalData.? --pl InstanceID,ElementType,StatisticTime,TotalIOs,KBytesTransferred,ReadIOs
+Pick Instance name to process
+0: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Array"
+1: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+FEPort+SP_A:0"
+2: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+FEPort+SP_A:1"
+3: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Volume+00005"
+4: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_0"
+5: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_1"
+6: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_2"
+7: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_3"
+8: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_4"
+9: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_5"
+10: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_6"
+11: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_7"
+Input integer between 0 and 11 or Ctrl-C to exit selection: 4
+Instances: CIM_BlockStorageStatisticalData
++---------------------------+-----------------+---------------------+-----------+---------------------------+------------+
+| InstanceID                | ElementType     |   KBytesTransferred |   ReadIOs | StatisticTime             |   TotalIOs |
+|---------------------------+-----------------+---------------------+-----------+---------------------------+------------|
+| "ACME+CF2A5091300089+Dis" | 10 (Disk Drive) |           453576349 |  38658792 | "20131029094521.509000-2" |   39726146 |
+| "k+0_0_0"                 |                 |                     |           | "40"                      |            |
++---------------------------+-----------------+---------------------+-----------+---------------------------+------------+
+pywbemcli> instance get CIM_BlockStorageStatisticalData.? --pl InstanceID,ElementType,IOTimeCounter,KBytesRead,WriteIOs,KBytesWritten,IdleTimeCounter
+Pick Instance name to process
+0: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Array"
+1: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+FEPort+SP_A:0"
+2: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+FEPort+SP_A:1"
+3: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Volume+00005"
+4: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_0"
+5: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_1"
+6: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_2"
+7: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_3"
+8: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_4"
+9: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_5"
+10: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_6"
+11: root/cimv2:CIM_BlockStorageStatisticalData.InstanceID="ACME+CF2A5091300089+Disk+0_0_7"
+Input integer between 0 and 11 or Ctrl-C to exit selection: 4
+Instances: CIM_BlockStorageStatisticalData
++-----------------------+-----------------+-------------------+-----------------+--------------+-----------------+------------+
+| InstanceID            | ElementType     |   IdleTimeCounter |   IOTimeCounter |   KBytesRead |   KBytesWritten |   WriteIOs |
+|-----------------------+-----------------+-------------------+-----------------+--------------+-----------------+------------|
+| "ACME+CF2A5091300089" | 10 (Disk Drive) |         460929424 |         1941691 |    428873067 |        24703282 |    1067354 |
+| "+Disk+0_0_0"         |                 |                   |                 |              |                 |            |
++-----------------------+-----------------+-------------------+-----------------+--------------+-----------------+------------+
+pywbemcli> -o mof instance shrub CIM_BlockStatisticsManifestCollection.? --ac CIM_MemberOfCollection
+CIM_BlockStatisticsManifestCollection.InstanceID="ACME+CF2A5091300089+MANIFEST_DEFAULT"
+ +-- Collection(Role)
+     +-- CIM_MemberOfCollection(AssocClass)
+         +-- Member(ResultRole)
+             +-- CIM_BlockStatisticsManifest(ResultClass)(4 insts)
+                 +-- /:CIM_BlockStatisticsManifest.InstanceID="ACME+CF2A5091300089+ACMEMANIFEST_DEFAULT+Array"
+                 +-- /:CIM_BlockStatisticsManifest.InstanceID="ACME+CF2A5091300089+ACMEMANIFEST_DEFAULT+Disk"
+                 +-- /:CIM_BlockStatisticsManifest.InstanceID="ACME+CF2A5091300089+ACMEMANIFEST_DEFAULT+FEPort"
+                 +-- /:CIM_BlockStatisticsManifest.InstanceID="ACME+CF2A5091300089+ACMEMANIFEST_DEFAULT+Volume"
+pywbemcli> -o mof instance get CIM_BlockStatisticsManifest.?
+Pick Instance name to process
+0: root/cimv2:CIM_BlockStatisticsManifest.InstanceID="ACME+CF2A5091300089+ACMEMANIFEST_DEFAULT+Array"
+1: root/cimv2:CIM_BlockStatisticsManifest.InstanceID="ACME+CF2A5091300089+ACMEMANIFEST_DEFAULT+Disk"
+2: root/cimv2:CIM_BlockStatisticsManifest.InstanceID="ACME+CF2A5091300089+ACMEMANIFEST_DEFAULT+FEPort"
+3: root/cimv2:CIM_BlockStatisticsManifest.InstanceID="ACME+CF2A5091300089+ACMEMANIFEST_DEFAULT+Volume"
+Input integer between 0 and 3 or Ctrl-C to exit selection: 0
+instance of CIM_BlockStatisticsManifest {
+   InstanceID = "ACME+CF2A5091300089+ACMEMANIFEST_DEFAULT+Array";
+   ElementType = 2;
+   RateElementType = 0;
+   IncludeStartStatisticTime = false;
+   IncludeStatisticTime = true;
+   IncludeTotalIOs = true;
+   IncludeKBytesTransferred = true;
+   IncludeIOTimeCounter = true;
+   IncludeReadIOs = true;
+   IncludeReadHitIOs = true;
+   IncludeReadIOTimeCounter = false;
+   IncludeReadHitIOTimeCounter = false;
+   IncludeKBytesRead = true;
+   IncludeWriteIOs = true;
+   IncludeWriteHitIOs = true;
+   IncludeWriteIOTimeCounter = false;
+   IncludeWriteHitIOTimeCounter = false;
+   IncludeKBytesWritten = true;
+   IncludeIdleTimeCounter = false;
+   IncludeMaintOp = false;
+   IncludeMaintTimeCounter = false;
+   CSVSequence = { "InstanceID", "ElementType", "StatisticTime", "TotalIOs",
+      "KBytesTransferred", "IOTimeCounter", "ReadIOs", "ReadHitIOs",
+      "KBytesRead", "WriteIOs", "WriteHitIOs", "KBytesWritten" };
+   CSVRateSequence = { };
+   IncludeRateIntervalStartTime = false;
+   IncludeRateIntervalEndTime = false;
+   IncludeTotalIOsRate = false;
+   IncludeKBytesTransferredRate = false;
+   IncludeReadIOsRate = false;
+   IncludeReadHitIOsRate = false;
+   IncludeKBytesReadRate = false;
+   IncludeWriteIOsRate = false;
+   IncludeWriteHitIOsRate = false;
+   IncludeKBytesWrittenRate = false;
+   IncludeMaintOpRate = false;
+   ElementName = "ACME+CF2A5091300089:DEFAULT";
+};
+
+pywbemcli>
