@@ -1256,8 +1256,8 @@
     // A CIM_StoragePool (Primordial) instance
      instance of CIM_StoragePool as $PSP0 {
         InstanceID = "ACME+CF2A5091300089+Primordial"; PoolID = "Primordial";
-        Primordial = true; TotalManagedSpace = 6244252603733;
-        RemainingManagedSpace = 1160305722027; LowSpaceWarningThreshold = 0;
+        Primordial = true; TotalManagedSpace = 4611142320128;
+        RemainingManagedSpace = 3284276829225; LowSpaceWarningThreshold = 0;
         Usage = 2; ClientSettableUsage = {}; SpaceLimit = 6244252603733;
         SpaceLimitDetermination = 2; ConsumedResourceUnits = "count";
         OperationalStatus = {2}; StatusDescriptions = {"OK"};
@@ -1832,63 +1832,63 @@
     instance of CIM_SoftwareIdentity as $DDSI00 {
       InstanceID = "ACME+CF2A5091300089+ACME+0_0_0";
       IsLargeBuildNumber = false;
-      VersionString = "ES0C";
+      VersionString = "2.3.1";
       Manufacturer = "ByteStor";
       IsEntity = false; };
       
     instance of CIM_SoftwareIdentity as $DDSI01 {
       InstanceID = "ACME+CF2A5091300089+ACME+0_0_1";
       IsLargeBuildNumber = false;
-      VersionString = "ES0C";
+      VersionString = "2.3.1";
       Manufacturer = "ByteStor";
       IsEntity = false; };
       
     instance of CIM_SoftwareIdentity as $DDSI02 {
       InstanceID = "ACME+CF2A5091300089+ACME+0_0_2";
       IsLargeBuildNumber = false;
-      VersionString = "ES0C";
+      VersionString = "2.3.1";
       Manufacturer = "ByteStor";
       IsEntity = false; };
       
     instance of CIM_SoftwareIdentity as $DDSI03 {
       InstanceID = "ACME+CF2A5091300089+ACME+0_0_3";
       IsLargeBuildNumber = false;
-      VersionString = "ES0C";
+      VersionString = "2.3.1";
       Manufacturer = "ByteStor";
       IsEntity = false; };
       
     instance of CIM_SoftwareIdentity as $DDSI04 {
       InstanceID = "ACME+CF2A5091300089+ACME+0_0_4";
       IsLargeBuildNumber = false;
-      VersionString = "ES0C";
+      VersionString = "2.3.1";
       Manufacturer = "ByteStor";
       IsEntity = false; };
       
     instance of CIM_SoftwareIdentity as $DDSI05 {
       InstanceID = "ACME+CF2A5091300089+ACME+0_0_5";
       IsLargeBuildNumber = false;
-      VersionString = "ES0C";
+      VersionString = "2.3.1";
       Manufacturer = "ByteStor";
       IsEntity = false; };
       
     instance of CIM_SoftwareIdentity as $DDSI06 {
       InstanceID = "ACME+CF2A5091300089+ACME+0_0_6";
       IsLargeBuildNumber = false;
-      VersionString = "ES0C";
+      VersionString = "2.3.1";
       Manufacturer = "ByteStor";
       IsEntity = false; };
       
     instance of CIM_SoftwareIdentity as $DDSI07 {
       InstanceID = "ACME+CF2A5091300089+ACME+0_0_7";
       IsLargeBuildNumber = false;
-      VersionString = "ES0C";
+      VersionString = "2.3.1";
       Manufacturer = "ByteStor";
       IsEntity = false; };
 
 
    // CIM_StorageExtent Instances
     instance of CIM_StorageExtent as $PRIMESE00 {
-      BlockSize = 512; NumberOfBlocks = 562882560; ConsumableBlocks = 562882560;
+      BlockSize = 512; NumberOfBlocks = 1125767168; ConsumableBlocks = 1125767168;
       ExtentStatus = {2};
       Primordial = true;
       Name = "0_0_0";
@@ -1904,7 +1904,7 @@
       ElementName = "Primordial 0_0_0"; };
       
     instance of CIM_StorageExtent as $PRIMESE01 {
-      BlockSize = 512; NumberOfBlocks = 562882560; ConsumableBlocks = 562882560;
+      BlockSize = 512; NumberOfBlocks = 1125767168; ConsumableBlocks = 1125767168;
       ExtentStatus = {2};
       Primordial = true;
       Name = "0_0_1";
@@ -1920,7 +1920,7 @@
       ElementName = "Primordial 0_0_1"; };
       
     instance of CIM_StorageExtent as $PRIMESE02 {
-       BlockSize = 512; NumberOfBlocks = 562882560; ConsumableBlocks = 562882560;
+       BlockSize = 512; NumberOfBlocks = 1125767168; ConsumableBlocks = 1125767168;
        ExtentStatus = {2};
        Primordial = true;
        Name = "0_0_2";
@@ -1936,7 +1936,7 @@
        ElementName = "Primordial 0_0_2"; };
        
     instance of CIM_StorageExtent as $PRIMESE03 {
-       BlockSize = 512; NumberOfBlocks = 562882560; ConsumableBlocks = 562882560;
+       BlockSize = 512; NumberOfBlocks = 1125767168; ConsumableBlocks = 1125767168;
        ExtentStatus = {2};
        Primordial = true;
        Name = "0_0_3";
@@ -1952,7 +1952,7 @@
        ElementName = "Primordial 0_0_3"; };
        
     instance of CIM_StorageExtent as $PRIMESE04 {
-       BlockSize = 512; NumberOfBlocks = 562882560; ConsumableBlocks = 562882560;
+       BlockSize = 512; NumberOfBlocks = 1125767168; ConsumableBlocks = 1125767168;
        ExtentStatus = {2};
        Primordial = true;
        Name = "0_0_4";
@@ -1968,7 +1968,7 @@
        ElementName = "Primordial 0_0_4"; };
        
     instance of CIM_StorageExtent as $PRIMESE05 {
-       BlockSize = 512; NumberOfBlocks = 562882560; ConsumableBlocks = 562882560;
+       BlockSize = 512; NumberOfBlocks = 1125767168; ConsumableBlocks = 1125767168;
        ExtentStatus = {2};
        Primordial = true;
        Name = "0_0_5";
@@ -1984,7 +1984,7 @@
        ElementName = "Primordial 0_0_5"; };
        
     instance of CIM_StorageExtent as $PRIMESE06 {
-       BlockSize = 512; NumberOfBlocks = 562882560; ConsumableBlocks = 562882560;
+       BlockSize = 512; NumberOfBlocks = 1125767168; ConsumableBlocks = 1125767168;
        ExtentStatus = {2};
        Primordial = true;
        Name = "0_0_6";
@@ -2000,7 +2000,7 @@
        ElementName = "Primordial 0_0_6"; };
        
     instance of CIM_StorageExtent as $PRIMESE07 {
-       BlockSize = 512; NumberOfBlocks = 562882560; ConsumableBlocks = 562882560;
+       BlockSize = 512; NumberOfBlocks = 1125767168; ConsumableBlocks = 1125767168;
        ExtentStatus = {2};
        Primordial = true;
        Name = "0_0_7";
@@ -2591,29 +2591,29 @@
          
        Instance of CIM_BlockStorageStatisticalData as $BSSDFEP0 {
          ElementType = 6;
-         TotalIOs = 67; KBytesTransferred = 33;
-         IOTimeCounter = 132;
+         TotalIOs = 66; KBytesTransferred = 33;
+         IOTimeCounter = 935579;
          InstanceID = "ACME+CF2A5091300089+FEPort+SP_A:0";
          ElementName = "SP_A:0";
          StatisticTime = "20131029094523.599000-240";};
          
        Instance of CIM_BlockStorageStatisticalData as $BSSDFEP1 {
          ElementType = 6;
-         TotalIOs = 0;
-         KBytesTransferred = 0;
-         IOTimeCounter = 132;
+         TotalIOs = 66;
+         KBytesTransferred = 33;
+         IOTimeCounter = 838985;
          InstanceID = "ACME+CF2A5091300089+FEPort+SP_A:1";
          ElementName = "SP_A:1";
          StatisticTime = "20131029094523.599000-240";};
          
        Instance of CIM_BlockStorageStatisticalData as $BSSDVolume5 {
          ElementType = 8;
-         TotalIOs = 0;
-         KBytesTransferred = 0; KBytesWritten = 0;
-         IOTimeCounter = 438;
-         ReadIOs = 0; ReadHitIOs = 0; KBytesRead = 0;
+         TotalIOs = 132;
+         KBytesTransferred = 66; KBytesWritten = 0;
+         IOTimeCounter = 152996;
+         ReadIOs = 132; ReadHitIOs = 131; KBytesRead = 66;
          WriteIOs = 0; WriteHitIOs = 0; 
-         IdleTimeCounter = 462867449;
+         IdleTimeCounter = 462714891;
          InstanceID = "ACME+CF2A5091300089+Volume+00005";
          ElementName = "00005";
          StatisticTime = "20131029094519.091000-240";};
@@ -2865,108 +2865,3 @@
          Collection = $BSStatColl;
          Member = $BSSDVolume5; };
          
-// STORAGE POOL DIAGNOSTIC INSTANCES
-// CIM_DiagnosticCompletionRecord instances
-// InstanceID,CompletionState,CreationTimeStamp,ErrorCode,ErrorCount,ExpirationDate,ManagedElementName,
-// RecordData,RecordFormat,RecordType,ServiceName
-       Instance of CIM_DiagnosticCompletionRecord as $DCRSelf0 {
-         InstanceID = "DCRSelf0";
-         CompletionState = 2;
-         CreationTimeStamp = "20131029094521.509000-240";
-         ErrorCode = {"0"};
-         ErrorCount = {0};
-         ExpirationDate = "20131129094521.509000-240";
-         ManagedElementName = "Concrete storage pool 0000 for CF2A5091300089 storage system";
-         RecordData = "Self Test on StoragePool 0000 found DRM101 - StoragePool is healthy";
-         RecordFormat = "*Test name on *StoragePool *PoolID* found *DIAG Message*";
-         RecordType = 2;
-         ServiceName = "Self Test"; };
-       Instance of CIM_DiagnosticCompletionRecord as $DCRSelf1 {
-         InstanceID = "DCRSelf1";
-         CompletionState = 2;
-         CreationTimeStamp = "20131029094621.509000-240";
-         ErrorCode = {"0"};
-         ErrorCount = {0};
-         ExpirationDate = "20131129094621.509000-240";
-         ManagedElementName = "Concrete storage pool 0001 for CF2A5091300089 storage system";
-         RecordData = "Self Test on StoragePool 0001 found DRM101 - StoragePool is healthy";
-         RecordFormat = "*Test name on *StoragePool *PoolID* found *DIAG Message*";
-         RecordType = 2;
-         ServiceName = "Self Test"; };
-       Instance of CIM_DiagnosticCompletionRecord as $DCRSelfP0 {
-         InstanceID = "DCRSelfP0";
-         CompletionState = 2;
-         CreationTimeStamp = "20131029094721.509000-240";
-         ErrorCode = {"0"};
-         ErrorCount = {0};
-         ExpirationDate = "20131129094721.509000-240";
-         ManagedElementName = "Primordial storage pool for CF2A5091300089 storage system";
-         RecordData = "Self Test on StoragePool Primordial found DRM101 - StoragePool is healthy";
-         RecordFormat = "*Test name on *StoragePool *PoolID* found *DIAG Message*";
-         RecordType = 2;
-         ServiceName = "Self Test"; };
-// SHRUB: CIM_LogManagesRecord to CIM_ DiagnosticLog (see below)
-      instance of CIM_LogManagesRecord as $LMRDCRSelfCSP0 {
-        Antecedent = $DCRSelf0;
-        Dependent = $CSP0; };
-      instance of CIM_LogManagesRecord as $LMRDCRSelfCSP1 {
-        Antecedent = $DCRSelf1;
-        Dependent = $CSP1; };
-      instance of CIM_LogManagesRecord as $LMRDCRSelfPSP0 {
-        Antecedent = $DCRSelfP0;
-        Dependent = $PSP0; };
-
-// CIM_DiagnosticLog instances
-// InstanceID
-      instance of CIM_DiagnosticLog as $DiagLogCSPSelf0 {
-                 InstanceID = "DiagLogCSPSelf0"; };
-      instance of CIM_DiagnosticLog as $DiagLogCSPSelf1 {
-                 InstanceID = "DiagLogCSPSelf1"; };
-      instance of CIM_DiagnosticLog as $DiagLogPSPSelf0 {
-                 InstanceID = "DiagLogPSPSelf0"; };
-// SHRUB: CIM_UseOfLog to CIM_StoragePoolDiagnosticTest (see below)
-// CIM_LogManagesRecord to CIM_DiagnosticRecord (see below)
-
-// CIM_DiagnosticServiceRecord instances
-// InstanceID,CreationTimeStamp,ExpirationDate,LoopsFailed,LoopsPassed,ManagedElementName
-// RecordData,RecordFormat,RecordType,ServiceName
-      instance of CIM_DiagnosticServiceRecord as $DSRSelf0-00 {
-         InstanceID = "DSRSelf0-00";
-         CreationTimeStamp = "20131029094621.509000-240";
-         ExpirationDate = "20131129094621.509000-240";
-         LoopsFailed = ;
-         LoopsPassed = ;
-         ManagedElementName = "Concrete storage pool 0000 for CF2A5091300089 storage system";
-         RecordData = "Self Test on StoragePool 0000 found DRM101 - StoragePool is healthy";
-         RecordFormat = "*Test name on *StoragePool *PoolID* found *DIAG Message*";
-         RecordType = 2;
-         ServiceName = "Self Test";
-};
-// SHRUB:  CIM_LogManagesRecord to CIM_ DiagnosticLog
-// CIM_RecordAppliesToElement to CIM_StoragePool
-
-// CIM_SoftwareIdentity instance
-// InstanceID,Manufacturer,MajorVersion,MinorVersion,RevisionNumber,VersionString
-// SHRUB:  CIM_InstalledSoftwareIdentity to CIM_System
-// CIM_ElementSoftwareIdentity to CIM_StoragePoolDiagnosticTest (see below)
-
-// CIM_StoragePoolDiagnosticServiceCapabilities instances
-// InstanceID,
-// ElementName = StoragePool Status Test|StoragePool Self Test|StoragePool RECE Test|StoragePool Impact Test|StoragePool Actions Test
-// SupportedDepths,SupportedExecutionControls,SupportedLogOptions,SupportedLogStorage,SupportedLoopControl,SupportedServiceModes
-// SHRUB: CIM_ElementCapabilities to CIM_StoragePoolDiagnosticTest (see below)
-
-// CIM_StoragePoolDiagnosticTest instances
-// SystemCreationClassName,SystemName,CreationClassName,Name
-//         SystemCreationClassName = "CIM_ComputerSystem"; SystemName = "ACME+CF2A5091300089";
-//         CreationClassName = "CIM_StoragePoolDiagnosticTest";
-//         Name = "StoragePool Status Test";
-// Characteristics,ElementName,StoragePoolTestType
-// SHRUB: CIM_AvailableDiagnosticService to CIM_StoragePool (property EstimatedDurationOfService)
-// CIM_ElementCapabilities to CIM_StoragePoolDiagnosticServiceCapabilities
-// CIM_ElementSoftwareIdentity to CIM_SoftwareIdentity
-// CIM_HostedService to CIM_ComputerSystem
-// CIM_ServiceAffectsElement to CIM_StoragePool
-// CIM_UseOfLog to CIM_DiagnosticLog
-// CIM_ElementSettingData to CIM_JobSettingData
-// 
