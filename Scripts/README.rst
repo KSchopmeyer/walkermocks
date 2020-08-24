@@ -8,11 +8,17 @@ WHAT IS A QUICK START GUIDE
 SMI-S is 2516 pages of reading spread across 8 books, plus it references another 14 or so DMTF profiles which amount to another 660 pages of reading. So, the question is where do you start? We have come up with a series of Quick Start Guides that are designed to help you get started by illustrating how to find useful SMI-S information in mock servers (mock ups of SMI-S server implementations). The Quick Start Guides don't illustrate EVERYTHING in the 3176 pages, but they give you a head start at finding some important items in SMI-S.
 
 We currently have quick start guides for:
+
 * The Interop Namespace - What is it and what does it tell us?
+
 * Performance Information - Where do I find performance information in an SMI-S Server?
+
 * Capacity Information - Where do I find storage capacity information in an SMI-S Server?
+
 * Hardware Information - Where do I find hardware information in an SMI-S Server?
-* Product Information - Where do I find product information in an SMI-S Server?
+
+* Product Information - Where do I find product information in an SMI-S 
+
 * Software Information - Where do I find software information in an SMI-S Server?
 
 TOOL USED FOR THE QUICK START GUIDE ILLUSTRATION
@@ -29,9 +35,13 @@ THE MOCK IMPLEMENTATIONS
 
 The mock implementations mock selected autonomous profiles and some of their component profiles in SMI-S 1.8.0.
 We currently have mock ups for the following autonomous profiles:
+
 * The SNIA Server Profile
+
 * The DMTF WBEM Server Profile
+
 * The Array Profile
+
 * The NAS Head Profile
 
 And we plan on doing a Fabric (and Switch) mock up.
